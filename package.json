@@ -1,0 +1,17 @@
+{
+  "name": "maid",
+  "version": "0.0.1",
+  "description": "Bot Maid discord",
+  "main": "Maid.js",
+  "dependencies": {
+    "discord-anti-spam": "^2.4.1",
+    "discord.js": "^11.1.0",
+    "dotenv": "^8.2.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Toast",
+  "license": "ISC"
+}
