@@ -27,7 +27,6 @@ client.on('ready', () => {
       type: "WATCHING",
     });
   });
-var prefix = '.'
 
 //bienvenue
 client.on('guildMemberAdd', member => {
