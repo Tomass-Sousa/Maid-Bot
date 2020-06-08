@@ -155,4 +155,4 @@ client.on('message', message => {
 });
 
 //login
-client.login(TOKEN);
+client.login(DISCORD_TOKEN);
