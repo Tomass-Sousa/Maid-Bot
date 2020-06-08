@@ -2,6 +2,7 @@
 
 //Start
 const discord = require('discord.js');
+const { prefix, token} = require('./config.json')
 const client = new discord.Client();
 
 //Le Point Help
@@ -155,4 +156,4 @@ client.on('message', message => {
 });
 
 //login
-client.login(process.env.DISCORD_TOKEN);
+client.login(TOKEN);
