@@ -2,7 +2,7 @@
 
 //Start
 const discord = require('discord.js');
-const { prefix, token} = require('./config.json')
+const { prefix, DISCORD_TOKEN} = require('./config.json')
 const client = new discord.Client();
 
 //Le Point Help
