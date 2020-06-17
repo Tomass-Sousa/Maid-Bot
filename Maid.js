@@ -105,7 +105,7 @@ client.on('message', message => {
         .setColor('#ffdfdf') 
         .setTitle("• ⊰ Hiku\'s Coffee ⊱ •")
         .setDescription("Membre correctement banni ✅")
-        .addField(`Le membre a bien été banni pour la raison: ${reason}`, '︶︶︶︶︶︶︶︶︶︶︶︶₊˚ˑ༄' )
+        .addField(`Le membre a bien été banni pour la raison: ${reason}`, '︶︶︶︶︶︶︶︶︶︶︶︶︶︶︶︶︶₊˚ˑ༄' )
         .setTimestamp()
         message.channel.send(ban)
    
