@@ -268,3 +268,16 @@ const equipes  = new discord.MessageEmbed()
            message.channel.send(equipes);
         }
     });
+
+    const Intro = new discord.MessageEmbed()
+     .setColor('#583F73')
+     .setTitle('__Le Staff :__') 
+     .setDescription('Pour toute question contactez un pillier !')
+     
+     client.on('message', message => {
+        if (!message.guild) return;
+
+        if (message.content === 'IntroStaffTurfu') {
+           message.channel.send(Intro);
+        }
+    });
