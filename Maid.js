@@ -232,7 +232,7 @@ const Boosters = new discord.MessageEmbed()
 const role = new discord.MessageEmbed()
     .setColor('#FEE0E2')
     .setAuthor('__Les Grades :__', 'https://cdn.discordapp.com/attachments/648412438219325461/724619286924230666/a_762309dc83e08f460fd3c269aeaf8f3c.gif' )
-    .setField('Vous pouvez gagner 10 à 20 d\'xp chaque minute avec tatsu pour monter en grade, le spam est inutile et l\'xp se farm très vite.')
+    .addField('Vous pouvez gagner 10 à 20 d\'xp chaque minute avec tatsu pour monter en grade, le spam est inutile et l\'xp se farm très vite.')
     .setImage('https://cdn.discordapp.com/attachments/705499848174206987/715621316669210654/unknown.png')
     
   client.on('message', message => {
@@ -247,7 +247,7 @@ const role = new discord.MessageEmbed()
 const pings = new discord.MessageEmbed()
     .setColor('#FEE0E2')
     .setAuthor('__Les Pings :__', 'https://cdn.discordapp.com/attachments/648412438219325461/724619286924230666/a_762309dc83e08f460fd3c269aeaf8f3c.gif' )
-    .setField('Cliquez sur les réactions pour avoir les rôles {pings}, vous aurez une notifications à chaque event proposé, jeux ou nouveauté.',':cherry_blossom: ⊱ Event \n :tanabata_tree: ⊱ Jeux \n :star2: ⊱ Nouveautés')
+    .addField('Cliquez sur les réactions pour avoir les rôles {pings}, vous aurez une notifications à chaque event proposé, jeux ou nouveauté.',':cherry_blossom: ⊱ Event \n :tanabata_tree: ⊱ Jeux \n :star2: ⊱ Nouveautés')
 client.on('message', message => {
     if (!message.guild) return;
 
@@ -260,7 +260,7 @@ client.on('message', message => {
 const equipes  = new discord.MessageEmbed()
     .setColor('#FEE0E2')
     .setAuthor('__Les Equipes :__', 'https://cdn.discordapp.com/attachments/648412438219325461/724619286924230666/a_762309dc83e08f460fd3c269aeaf8f3c.gif' )
-    .setField('choisissez votre camp entre les démons et les pourfendeurs.',':fire: ⊱ Pourfendeurs  \n :knife: ⊱ Démons')
+    .addField('choisissez votre camp entre les démons et les pourfendeurs.',':fire: ⊱ Pourfendeurs  \n :knife: ⊱ Démons')
     client.on('message', message => {
         if (!message.guild) return;
     
