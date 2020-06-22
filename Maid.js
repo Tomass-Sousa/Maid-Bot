@@ -232,7 +232,7 @@ const Boosters = new discord.MessageEmbed()
 const role = new discord.MessageEmbed()
     .setColor('#FEE0E2')
     .setAuthor('Les Grades :', 'https://cdn.discordapp.com/attachments/648412438219325461/724619286924230666/a_762309dc83e08f460fd3c269aeaf8f3c.gif' )
-    .addField('Vous pouvez gagner 10 à 20 d\'xp chaque minute avec tatsu pour monter en grade, le spam est inutile et l\'xp se farm très vite.')
+    .setDescription('Vous pouvez gagner 10 à 20 d\'xp chaque minute avec tatsu pour monter en grade, le spam est inutile et l\'xp se farm très vite.')
     .setImage('https://cdn.discordapp.com/attachments/705499848174206987/715621316669210654/unknown.png')
     
   client.on('message', message => {
