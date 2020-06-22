@@ -97,7 +97,7 @@ client.on('message', message => {
     if(!message.member.hasPermission(["BAN_MEMBERS"], ["ADMINISTRATOR"])) return message.channel.send("Tu n'as pas la permission de faire cette commande.")
 
     let banMember = message.mentions.members.first() //|| message.guild.members.get(args[0])
-    if(!banMember) return message.channel.send("Tu dois mentionner quelqu'un❌")
+    if(!banMember) return message.channel.send("Tu dois mentionner quelqu'un.")
 
     let reason = args.slice(1).join(" ")
     if(!reason) reason = "Aucune raison donnée."
@@ -116,7 +116,7 @@ client.on('message', message => {
         .setColor('#ffdfdf') 
         .setTitle(`Tu as été banni du serveur ${message.guild.name}!`)
         .setDescription("Le BanHammer t'as frappé")
-        .addField(`${message.member.user.tag} t'as banni pour la raison suivante: ${reason}`, "Bye Bye")
+        .addField(`${message.member.user.tag} t'as banni pour la raison suivante: ${reason}`, "Sayonara !")
         .setTimestamp()
     banMember.send(msgBan).then(() =>
     banMember.ban()).catch(err => console.log(err))
@@ -151,8 +151,30 @@ client.on('message', message => {
     if (!message.guild) return;
 
     if (message.content === prefix + 'info') {
-       message.channel.send("j'ai été créée et développée par Aik, Toast et Zero, mon nom est Maid, mais vous pouvez m'appeler Kaori.");
+       message.channel.send("j'ai été créée et développée par Aik et Toast, mon nom est Maid, mais vous pouvez m'appeler Kaori.");
     }
+});
+
+//Purge 
+client.on('message', message => {
+    if (!message.guild) return;
+
+if (message.content.startsWith(prefix + "purge")) {
+message.delete()
+if(!message.member.hasPermission(["KICK_MEMBERS"],  ["BAN_MEMBERS"],  ["ADMINISTRATOR"])) return message.reply("tu n'as pas la permission de faire cette commande.");
+let messageArray = message.content.split(" ");
+let args = messageArray.slice(1);
+const id = args.join()
+let number = id
+let limit = 25
+if (id > limit) {
+number = 25
+message.channel.bulkDelete(number)
+}
+if (id < limit) {
+message.channel.bulkDelete(number)
+} 
+}
 });
 
 //login
