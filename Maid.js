@@ -164,7 +164,7 @@ client.login(DISCORD_TOKEN);
 //Staff
 const Staff = new discord.MessageEmbed()
      .setColor('#583F73')
-     .setAuthor('__Hiku\'s Coffee :__', 'https://cdn.discordapp.com/attachments/648412438219325461/724619286924230666/a_762309dc83e08f460fd3c269aeaf8f3c.gif' )
+     .setAuthor('Hiku\'s Coffee :', 'https://cdn.discordapp.com/attachments/648412438219325461/724619286924230666/a_762309dc83e08f460fd3c269aeaf8f3c.gif' )
      .setDescription('Voice le staff du café :')
      .addField('__Fondatrice__', 'Hiku')
      .addField('__Administrateurs__', 'Toast \n Aik')
@@ -208,7 +208,7 @@ const Reglement = new discord.MessageEmbed()
 //Boosters
 const Boosters = new discord.MessageEmbed()
     .setColor('#ff63da')
-    .setAuthor('__Boosters :__', 'https://cdn.discordapp.com/attachments/648412438219325461/724619286924230666/a_762309dc83e08f460fd3c269aeaf8f3c.gif' )
+    .setAuthor('Boosters :', 'https://cdn.discordapp.com/attachments/648412438219325461/724619286924230666/a_762309dc83e08f460fd3c269aeaf8f3c.gif' )
     .setDescription('__En boostant le serveur vous aurez les avantages suivants:__')
     .addField(":cherry_blossom: 1 ⊱", "Un rôle personnalisé.")
     .addField(":cherry_blossom: 2 ⊱", "Une couleur au choix.")
@@ -231,7 +231,7 @@ const Boosters = new discord.MessageEmbed()
 //Grades
 const role = new discord.MessageEmbed()
     .setColor('#FEE0E2')
-    .setAuthor('__Les Grades :__', 'https://cdn.discordapp.com/attachments/648412438219325461/724619286924230666/a_762309dc83e08f460fd3c269aeaf8f3c.gif' )
+    .setAuthor('Les Grades :', 'https://cdn.discordapp.com/attachments/648412438219325461/724619286924230666/a_762309dc83e08f460fd3c269aeaf8f3c.gif' )
     .addField('Vous pouvez gagner 10 à 20 d\'xp chaque minute avec tatsu pour monter en grade, le spam est inutile et l\'xp se farm très vite.')
     .setImage('https://cdn.discordapp.com/attachments/705499848174206987/715621316669210654/unknown.png')
     
@@ -246,7 +246,7 @@ const role = new discord.MessageEmbed()
 //Pings 
 const pings = new discord.MessageEmbed()
     .setColor('#FEE0E2')
-    .setAuthor('__Les Pings :__', 'https://cdn.discordapp.com/attachments/648412438219325461/724619286924230666/a_762309dc83e08f460fd3c269aeaf8f3c.gif' )
+    .setAuthor('Les Pings :', 'https://cdn.discordapp.com/attachments/648412438219325461/724619286924230666/a_762309dc83e08f460fd3c269aeaf8f3c.gif' )
     .addField('Cliquez sur les réactions pour avoir les rôles {pings}, vous aurez une notifications à chaque event proposé, jeux ou nouveauté.',':cherry_blossom: ⊱ Event \n :tanabata_tree: ⊱ Jeux \n :star2: ⊱ Nouveautés')
 client.on('message', message => {
     if (!message.guild) return;
@@ -259,7 +259,7 @@ client.on('message', message => {
 //Equipes
 const equipes  = new discord.MessageEmbed()
     .setColor('#FEE0E2')
-    .setAuthor('__Les Equipes :__', 'https://cdn.discordapp.com/attachments/648412438219325461/724619286924230666/a_762309dc83e08f460fd3c269aeaf8f3c.gif' )
+    .setAuthor('Les Equipes :', 'https://cdn.discordapp.com/attachments/648412438219325461/724619286924230666/a_762309dc83e08f460fd3c269aeaf8f3c.gif' )
     .addField('choisissez votre camp entre les démons et les pourfendeurs.',':fire: ⊱ Pourfendeurs  \n :knife: ⊱ Démons')
     client.on('message', message => {
         if (!message.guild) return;
