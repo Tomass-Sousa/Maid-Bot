@@ -18,8 +18,7 @@ const help = new discord.MessageEmbed()
     .addField("__.kick__", "Permet d'expulser un membre.")
     .addField("__.avatar__", "Affiche l'avatar du membre.")
     .addField("__.purge__", "Pour effacer un nombre de messages.")
-    .setImage('https://cdn.discordapp.com/attachments/705499848174206987/716251926710452234/OK6W_koKDTOqqqLDbIoPApKuI1qnjWj8DtVkFCcj45w.gif')
-    .setFooter('Le Staff vous remercie pour votre activité !', 'https://cdn.discordapp.com/attachments/705499848174206987/715573330001920020/AbkwNs1t_400x400.jpg');
+    .setImage('https://cdn.discordapp.com/attachments/705499848174206987/716251926710452234/OK6W_koKDTOqqqLDbIoPApKuI1qnjWj8DtVkFCcj45w.gif');
 
 //log
 client.on('ready', () => {
