@@ -9,16 +9,17 @@ const client = new discord.Client();
 const help = new discord.MessageEmbed()
     .setColor('#ffdfdf')
     .setTitle('Aide')
-    .setAuthor('Coffee\'s Staff', 'https://cdn.discordapp.com/attachments/705499848174206987/715573330001920020/AbkwNs1t_400x400.jpg')
+    .setAuthor('Hiku\'s Coffee :', 'https://cdn.discordapp.com/attachments/648412438219325461/724619286924230666/a_762309dc83e08f460fd3c269aeaf8f3c.gif')
     .setDescription('Retrouve la liste des commandes ici')
-    .addField("help", "Affiche cette page")
-    .addField("avatar", "Affiche l'avatar du membre")
-    .addField("kick", "Permet d'expulser un membre")
-    .addField("ban", "Permet de bannir un membre")
-    .addField("ping ", "Ping le bot")
+    .addField("__.ping__ ", "Ping le bot.")
+    .addField("__.help__", "Affiche cette page.")
+    .addField("__.info__", "Voir les createurs du bot.")
+    .addField("__.ban__", "Permet de bannir un membre.")
+    .addField("__.kick__", "Permet d'expulser un membre.")
+    .addField("__.avatar__", "Affiche l'avatar du membre.")
+    .addField("__.purge__", "Pour effacer un nombre de messages.")
     .setImage('https://cdn.discordapp.com/attachments/705499848174206987/716251926710452234/OK6W_koKDTOqqqLDbIoPApKuI1qnjWj8DtVkFCcj45w.gif')
     .setFooter('Le Staff vous remercie pour votre activité !', 'https://cdn.discordapp.com/attachments/705499848174206987/715573330001920020/AbkwNs1t_400x400.jpg');
-    
 
 //log
 client.on('ready', () => {
@@ -46,6 +47,7 @@ client.on('guildMemberAdd', member => {
 //ping
  client.on('message', message => {
      if (message.content === prefix + 'ping' ){
+     if (message.author.bot) return;
           message.reply('Pong')
      }
 });
@@ -56,6 +58,7 @@ client.on('message', message => {
     let args = messageArray.slice(1);
 
     if(message.content.startsWith(".kick")){
+    if (message.author.bot) return;
     if(!message.member.hasPermission(["KICK_MEMBERS"],  ["BAN_MEMBERS"],  ["ADMINISTRATOR"])) return message.channel.send("Tu n'as pas la permission de faire cette commande.")
 
     let kickMember = message.mentions.members.first() //|| message.guild.members.get(args[0])
@@ -94,6 +97,7 @@ client.on('message', message => {
     let member = messageArray.slice(2);
 
     if(message.content.startsWith(".ban")){
+    if (message.author.bot) return;
     if(!message.member.hasPermission(["BAN_MEMBERS"], ["ADMINISTRATOR"])) return message.channel.send("Tu n'as pas la permission de faire cette commande.")
 
     let banMember = message.mentions.members.first() //|| message.guild.members.get(args[0])
@@ -127,6 +131,7 @@ client.on('message', message => {
 //Pour voir l'avatar
 client.on('message', message => {
     if (!message.guild) return;
+    if (message.author.bot) return;
     if (message.content.startsWith('.avatar')) {
       const user = message.mentions.users.first() || message.author;
       const avatarEmbed = new discord.MessageEmbed()
@@ -140,8 +145,9 @@ client.on('message', message => {
 //help
 client.on('message', message => {
      if (!message.guild) return;
-
+     if (message.author.bot) return;
      if (message.content === prefix + 'help') {
+        message.delete()
         message.channel.send(help);
      }
 });    
@@ -149,7 +155,7 @@ client.on('message', message => {
 //Info Bot
 client.on('message', message => {
     if (!message.guild) return;
-
+    if (message.author.bot) return;
     if (message.content === prefix + 'info') {
        message.channel.send("j'ai été créée et développée par Aik et Toast, mon nom est Maid, mais vous pouvez m'appeler Kaori.");
     }
