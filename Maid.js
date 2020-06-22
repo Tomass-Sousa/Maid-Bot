@@ -36,7 +36,7 @@ client.on('guildMemberAdd', member => {
        .setTitle(`Bienvenue dans notre café !`)
        .setColor(`#ffdfdf`)
        .setThumbnail(url)
-       .setAuthor('Bienvenue', 'https://cdn.discordapp.com/attachments/648412438219325461/724619286924230666/a_762309dc83e08f460fd3c269aeaf8f3c.gif' )
+       .setAuthor('Hiku\'s Coffee', 'https://cdn.discordapp.com/attachments/648412438219325461/724619286924230666/a_762309dc83e08f460fd3c269aeaf8f3c.gif' )
        .setDescription(`Un nouveau client est arrivé : ${member.user.username}`)
        .addField("Avant tout : ", "• Lire le <#711111570163499018> \n • Prendre ses <#716566179967139963> \n • Et regarder le <#715954917327765504> \n ︶︶︶︶︶︶︶︶︶︶︶︶₊˚ˑ༄")
        .setImage('https://cdn.discordapp.com/attachments/705499848174206987/715828030626594846/c5c9476988f466622a97bafe5866ac93cc3ea0d2_hq.gif')
