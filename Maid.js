@@ -37,7 +37,7 @@ client.on('guildMemberAdd', member => {
        .setColor(`#ffdfdf`)
        .setThumbnail(url)
        .setAuthor('Bienvenue', 'https://cdn.discordapp.com/attachments/648412438219325461/724619286924230666/a_762309dc83e08f460fd3c269aeaf8f3c.gif' )
-       .setDescription(`Un nouveau client est arrivé: ${member.user.username}`)
+       .setDescription(`Un nouveau client est arrivé : ${member.user.username}`)
        .addField("Avant tout : ", "• Lire le <#711111570163499018> \n • Prendre ses <#716566179967139963> \n • Et regarder le <#715954917327765504> \n ︶︶︶︶︶︶︶︶︶︶︶︶₊˚ˑ༄")
        .setImage('https://cdn.discordapp.com/attachments/705499848174206987/715828030626594846/c5c9476988f466622a97bafe5866ac93cc3ea0d2_hq.gif')
     channel.send(welcome)
@@ -158,31 +158,3 @@ client.on('message', message => {
 //login
 client.login(DISCORD_TOKEN);
 
-
-
-
-//Pings 
-const pings = new discord.MessageEmbed()
-    .setColor('#FEE0E2')
-    .setAuthor('Les Pings :', 'https://cdn.discordapp.com/attachments/648412438219325461/724619286924230666/a_762309dc83e08f460fd3c269aeaf8f3c.gif' )
-    .addField('Choisissez pour quels événements vous voulez être notifiés.',':cherry_blossom: ⊱ Event \n :tanabata_tree: ⊱ Jeux \n :star2: ⊱ Nouveautés')
-client.on('message', message => {
-    if (!message.guild) return;
-
-    if (message.content === 'jkdxcsjhdfcujdrfecikesdol') {
-       message.channel.send(pings);
-    }
-});
-
-//Equipes
-const equipes  = new discord.MessageEmbed()
-    .setColor('#FEE0E2')
-    .setAuthor('Les Equipes :', 'https://cdn.discordapp.com/attachments/648412438219325461/724619286924230666/a_762309dc83e08f460fd3c269aeaf8f3c.gif' )
-    .addField('Choisissez votre camp entre les démons et les pourfendeurs.',':fire: ⊱ Pourfendeurs  \n :knife: ⊱ Démons')
-    client.on('message', message => {
-        if (!message.guild) return;
-    
-        if (message.content === 'ergegegneuihdbvuhbeah') {
-           message.channel.send(equipes);
-        }
-    });
