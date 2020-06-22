@@ -207,7 +207,7 @@ const Reglement = new discord.MessageEmbed()
 //Boosters
 const Boosters = new discord.MessageEmbed()
     .setColor('#ff63da')
-    .setTitle('__Boosters :__')
+    .setAuthor('Les boosters :', 'https://cdn.discordapp.com/attachments/648412438219325461/724619286924230666/a_762309dc83e08f460fd3c269aeaf8f3c.gif' )
     .setDescription('__En boostant le serveur vous aurez les avantages suivants:__')
     .addField(":cherry_blossom: 1 ⊱", "Un rôle dj.")
     .addField(":cherry_blossom: 2 ⊱", "Un rôle personnalisé.")
