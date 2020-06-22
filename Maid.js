@@ -159,95 +159,13 @@ client.on('message', message => {
 client.login(DISCORD_TOKEN);
 
 
-//A effacer après utilisation !
 
-//Staff
-const Staff = new discord.MessageEmbed()
-     .setColor('#583F73')
-     .setAuthor('Hiku\'s Coffee :', 'https://cdn.discordapp.com/attachments/648412438219325461/724619286924230666/a_762309dc83e08f460fd3c269aeaf8f3c.gif' )
-     .setDescription('Voice le staff du café :')
-     .addField('__Fondatrice__', 'Hiku')
-     .addField('__Modérateurs__', 'Toast \n Aik')
-     .addField('__Helpeurs__', 'Ryuu \n Yuel')  
-     .addField('__Bot__', 'Maid')
-     .setImage('https://cdn.discordapp.com/attachments/705499848174206987/724606161394860042/1456244155_juttu2.gif')
-    
-     client.on('message', message => {
-        if (!message.guild) return;
-
-        if (message.content === 'Aik el bogossito') {
-           message.channel.send(Staff);
-        }
-});
-
-//Réglement 
-const Reglement = new discord.MessageEmbed()
-    .setColor('#ffdfdf')
-    .setAuthor('Hiku\'s Coffee :', 'https://cdn.discordapp.com/attachments/648412438219325461/724619286924230666/a_762309dc83e08f460fd3c269aeaf8f3c.gif' )
-    .setDescription('__Bienvenue au règlement de notre café.__')
-    .addField(":cherry_blossom: 1 ⊱", "L'Nsfw, le gore, la pédophilie, le bestial sont interdis et bannis.")
-    .addField(":cherry_blossom: 2 ⊱", "Ne pas être toxique, éviter les débats inutiles ou les régler en privé.")
-    .addField(":cherry_blossom: 3 ⊱", "Aucune publicité pour d'autre serveurs n'est acceptée. Même en Mp.")
-    .addField(":cherry_blossom: 4 ⊱", "Ne spammez pas, les bots vous banniront au bout de 3 warns.")
-    .addField(":cherry_blossom: 5 ⊱", "Respectez le staff, ils font tous de leur mieux pour garder un serveur sain.")
-    .addField(":cherry_blossom: 6 ⊱", "Pas de sujets sensibles comme la religion, l'homophobie, le sexisme ou le racisme.")
-    .addField(":cherry_blossom: 7 ⊱", "Respectez les channels selon leurs thèmes.")
-    .addField(":cherry_blossom: 8 ⊱", "Profitez du calme pour passer un bon moment, le troll est inutile, les bans sont rapides.")
-    .addField(":cherry_blossom: 9 ⊱", "Cliquez sur la réaction pour avoir accès au serveur.")
-    .setImage('https://cdn.discordapp.com/attachments/705499848174206987/715648159082086421/Capture.JPG')
-    
-  client.on('message', message => {
-    if (!message.guild) return;
-
-    if (message.content === 'Yxzubfrugtaioen') {
-       message.channel.send(Reglement);
-    }
-});    
-
-//Boosters
-const Boosters = new discord.MessageEmbed()
-    .setColor('#ff63da')
-    .setAuthor('Les boosters :', 'https://cdn.discordapp.com/attachments/648412438219325461/724619286924230666/a_762309dc83e08f460fd3c269aeaf8f3c.gif' )
-    .setDescription('__En boostant le serveur vous aurez les avantages suivants:__')
-    .addField(":cherry_blossom: 1 ⊱", "Un rôle dj.")
-    .addField(":cherry_blossom: 2 ⊱", "Un rôle personnalisé.")
-    .addField(":cherry_blossom: 3 ⊱", "Une couleur au choix.")
-    .addField(":cherry_blossom: 4 ⊱", "Une priorité en vocal.")
-    .addField(":cherry_blossom: 5 ⊱", "Ajouter des emotes supplémentaires.")
-    .addField(":cherry_blossom: 6 ⊱", "Place prioritaire pour les events et autres.")
-    .addField(":cherry_blossom: 7 ⊱", "Envoyer des liens et des images sur les channels.")
-    .addField(":cherry_blossom: 8 ⊱", "Avoir une place tout en haut de la liste des membres.")
-    .addField(":cherry_blossom: 9 ⊱", "Contacter le staff plus facilement, en mp ou a l'écrit.")
-    .setImage('https://cdn.discordapp.com/attachments/705499848174206987/716684373402845194/giphy.gif')
-    
-  client.on('message', message => {
-    if (!message.guild) return;
-
-    if (message.content === 'fziuvneivnediez') {
-       message.channel.send(Boosters);
-    }
-});    
-
-//Grades
-const role = new discord.MessageEmbed()
-    .setColor('#FEE0E2')
-    .setAuthor('Les Grades :', 'https://cdn.discordapp.com/attachments/648412438219325461/724619286924230666/a_762309dc83e08f460fd3c269aeaf8f3c.gif' )
-    .setDescription('Vous pouvez gagner 10 à 20 d\'xp chaque minute avec tatsu pour monter en grade, le spam est inutile et l\'xp se farm très vite.')
-    .setImage('https://cdn.discordapp.com/attachments/705499848174206987/715621316669210654/unknown.png')
-    
-  client.on('message', message => {
-    if (!message.guild) return;
-
-    if (message.content === 'aziuizecjnyzetgcziy') {
-       message.channel.send(role);
-    }
-});
 
 //Pings 
 const pings = new discord.MessageEmbed()
     .setColor('#FEE0E2')
     .setAuthor('Les Pings :', 'https://cdn.discordapp.com/attachments/648412438219325461/724619286924230666/a_762309dc83e08f460fd3c269aeaf8f3c.gif' )
-    .addField('Cliquez sur les réactions pour avoir les rôles {pings}, vous aurez une notifications à chaque event proposé, jeux ou nouveauté.',':cherry_blossom: ⊱ Event \n :tanabata_tree: ⊱ Jeux \n :star2: ⊱ Nouveautés')
+    .addField('Choisissez pour quels événements vous voulez être notifiés.',':cherry_blossom: ⊱ Event \n :tanabata_tree: ⊱ Jeux \n :star2: ⊱ Nouveautés')
 client.on('message', message => {
     if (!message.guild) return;
 
@@ -260,24 +178,11 @@ client.on('message', message => {
 const equipes  = new discord.MessageEmbed()
     .setColor('#FEE0E2')
     .setAuthor('Les Equipes :', 'https://cdn.discordapp.com/attachments/648412438219325461/724619286924230666/a_762309dc83e08f460fd3c269aeaf8f3c.gif' )
-    .addField('choisissez votre camp entre les démons et les pourfendeurs.',':fire: ⊱ Pourfendeurs  \n :knife: ⊱ Démons')
+    .addField('Choisissez votre camp entre les démons et les pourfendeurs.',':fire: ⊱ Pourfendeurs  \n :knife: ⊱ Démons')
     client.on('message', message => {
         if (!message.guild) return;
     
         if (message.content === 'ergegegneuihdbvuhbeah') {
            message.channel.send(equipes);
-        }
-    });
-
-    const Intro = new discord.MessageEmbed()
-     .setColor('#583F73')
-     .setTitle('__Le Staff :__') 
-     .setDescription('Pour toute question contactez un pillier !')
-     
-     client.on('message', message => {
-        if (!message.guild) return;
-
-        if (message.content === 'IntroStaffTurfu') {
-           message.channel.send(Intro);
         }
     });
