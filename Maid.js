@@ -195,7 +195,6 @@ const Reglement = new discord.MessageEmbed()
     .addField(":cherry_blossom: 8 ⊱", "Profitez du calme pour passer un bon moment, le troll est inutile, les bans sont rapides.")
     .addField(":cherry_blossom: 9 ⊱", "Cliquez sur la réaction pour avoir accès au serveur.")
     .setImage('https://cdn.discordapp.com/attachments/705499848174206987/715648159082086421/Capture.JPG')
-    .setFooter("Bot développé par Aik et Toast, pour tout soucis contactez un pillier.")
     
   client.on('message', message => {
     if (!message.guild) return;
