@@ -28,16 +28,19 @@ client.on('ready', () => {
 
 //bienvenue
 client.on('guildMemberAdd', member => {
-    const channel = member.guild.channels.cache.find(channel => channel.name === '〢🌙général');
+    const channel = member.guild.channels.cache.find(channel => channel.name === '〢🌙accueil');
     if (!channel) return;
+    const url = member.user.avatarURL({ format: 'png', dynamic: true, size: 1024 })
     const welcome = new discord.MessageEmbed()
+    
        .setTitle(`Bienvenue dans notre café!`)
        .setColor(`#ffdfdf`)
-       .setDescription(`Un nouveau client est arrivé: ${member}`)
+       .setThumbnail(url)
+       .setAuthor('Bienvenue', 'https://cdn.discordapp.com/attachments/648412438219325461/724619286924230666/a_762309dc83e08f460fd3c269aeaf8f3c.gif' )
+       .setDescription(`Un nouveau client est arrivé: ${member.user.username}`)
        .addField("Avant tout: ", "• Lire le <#711111570163499018> \n • Prendre ses <#716566179967139963> \n • Et regarder le <#715954917327765504> \n ︶︶︶︶︶︶︶︶︶︶︶︶₊˚ˑ༄")
-       .setFooter("Pour tout soucis, contactez un pillier.")
-       .setImage('https://cdn.discordapp.com/attachments/705499848174206987/715828030626594846/c5c9476988f466622a97bafe5866ac93cc3ea0d2_hq.gif'); 
-    channel.send(welcome);
+       .setImage('https://cdn.discordapp.com/attachments/705499848174206987/715828030626594846/c5c9476988f466622a97bafe5866ac93cc3ea0d2_hq.gif')
+    channel.send(welcome)
 });
 
 //ping
@@ -103,8 +106,8 @@ client.on('message', message => {
     
     const ban = new discord.MessageEmbed()
         .setColor('#ffdfdf') 
-        .setTitle("• ⊰ Hiku\'s Coffee ⊱ •")
-        .setDescription("Membre correctement banni ✅")
+        .setTitle("Hiku\'s Coffee")
+        .setDescription("Membre correctement banni :cherry_blossom:")
         .addField(`Le membre a bien été banni pour la raison: ${reason}`, '︶︶︶︶︶︶︶︶︶︶︶︶︶︶︶︶︶₊˚ˑ༄' )
         .setTimestamp()
         message.channel.send(ban)
@@ -112,7 +115,7 @@ client.on('message', message => {
     const msgBan = new discord.MessageEmbed()
         .setColor('#ffdfdf') 
         .setTitle(`Tu as été banni du serveur ${message.guild.name}!`)
-        .setDescription("Le HammerBan t'as frappé")
+        .setDescription("Le BanHammer t'as frappé")
         .addField(`${message.member.user.tag} t'as banni pour la raison suivante: ${reason}`, "Bye Bye")
         .setTimestamp()
     banMember.send(msgBan).then(() =>
@@ -154,3 +157,114 @@ client.on('message', message => {
 
 //login
 client.login(DISCORD_TOKEN);
+
+
+//A effacer après utilisation !
+
+//Staff
+const Staff = new discord.MessageEmbed()
+     .setColor('#583F73')
+     .setAuthor('__Hiku\'s Coffee :__', 'https://cdn.discordapp.com/attachments/648412438219325461/724619286924230666/a_762309dc83e08f460fd3c269aeaf8f3c.gif' )
+     .setDescription('Voice le staff du café :')
+     .addField('__Fondatrice__', 'Hiku')
+     .addField('__Administrateurs__', 'Toast \n Aik')
+     .addField('__Helpeurs__', 'Ryuu \n Yuel')  
+     .addField('__Bot__', 'Maid')
+     .setImage('https://cdn.discordapp.com/attachments/705499848174206987/724606161394860042/1456244155_juttu2.gif')
+    
+     client.on('message', message => {
+        if (!message.guild) return;
+
+        if (message.content === 'Aik el bogossito') {
+           message.channel.send(Staff);
+        }
+});
+
+//Réglement 
+const Reglement = new discord.MessageEmbed()
+    .setColor('#ffdfdf')
+    .setAuthor('Hiku\'s Coffee :', 'https://cdn.discordapp.com/attachments/648412438219325461/724619286924230666/a_762309dc83e08f460fd3c269aeaf8f3c.gif' )
+    .setDescription('__Bienvenue au règlement de notre café.__')
+    .addField(":cherry_blossom: 1 ⊱", "L'Nsfw, le gore, la pédophilie, le bestial sont interdis et bannis.")
+    .addField(":cherry_blossom: 2 ⊱", "Ne pas être toxique, éviter les débats inutiles ou les régler en privé.")
+    .addField(":cherry_blossom: 3 ⊱", "Aucune publicité pour d'autre serveurs n'est acceptée. Même en Mp.")
+    .addField(":cherry_blossom: 4 ⊱", "Ne spammez pas, les bots vous banniront au bout de 3 warns.")
+    .addField(":cherry_blossom: 5 ⊱", "Respectez le staff, ils font tous de leur mieux pour garder un serveur sain.")
+    .addField(":cherry_blossom: 6 ⊱", "Pas de sujets sensibles comme la religion, l'homophobie, le sexisme ou le racisme.")
+    .addField(":cherry_blossom: 7 ⊱", "Respectez les channels selon leurs thèmes.")
+    .addField(":cherry_blossom: 8 ⊱", "Profitez du calme pour passer un bon moment, le troll est inutile, les bans sont rapides.")
+    .addField(":cherry_blossom: 9 ⊱", "Cliquez sur la réaction pour avoir accès au serveur.")
+    .setImage('https://cdn.discordapp.com/attachments/705499848174206987/715648159082086421/Capture.JPG')
+    .setFooter("Bot développé par Aik et Toast, pour tout soucis contactez un pillier.")
+    
+  client.on('message', message => {
+    if (!message.guild) return;
+
+    if (message.content === 'Yxzubfrugtaioen') {
+       message.channel.send(Reglement);
+    }
+});    
+
+//Boosters
+const Boosters = new discord.MessageEmbed()
+    .setColor('#ff63da')
+    .setAuthor('__Boosters :__', 'https://cdn.discordapp.com/attachments/648412438219325461/724619286924230666/a_762309dc83e08f460fd3c269aeaf8f3c.gif' )
+    .setDescription('__En boostant le serveur vous aurez les avantages suivants:__')
+    .addField(":cherry_blossom: 1 ⊱", "Un rôle personnalisé.")
+    .addField(":cherry_blossom: 2 ⊱", "Une couleur au choix.")
+    .addField(":cherry_blossom: 3 ⊱", "Une priorité en vocal.")
+    .addField(":cherry_blossom: 4 ⊱", "Ajouter des emotes supplémentaires.")
+    .addField(":cherry_blossom: 5 ⊱", "Place prioritaire pour les events et autres.")
+    .addField(":cherry_blossom: 6 ⊱", "Avoir une place tout en haut de la liste des membres.")
+    .addField(":cherry_blossom: 7 ⊱", "Contacter le staff plus facilement, en mp ou a l'écrit.")
+    .addField(":cherry_blossom: 8 ⊱", "Envoyer des liens et des images sur les channels, le spam reste interdit.")
+    .setImage('https://cdn.discordapp.com/attachments/705499848174206987/716684373402845194/giphy.gif')
+    
+  client.on('message', message => {
+    if (!message.guild) return;
+
+    if (message.content === 'fziuvneivnediez') {
+       message.channel.send(Boosters);
+    }
+});    
+
+//Grades
+const role = new discord.MessageEmbed()
+    .setColor('#FEE0E2')
+    .setAuthor('__Les Grades :__', 'https://cdn.discordapp.com/attachments/648412438219325461/724619286924230666/a_762309dc83e08f460fd3c269aeaf8f3c.gif' )
+    .setField('Vous pouvez gagner 10 à 20 d\'xp chaque minute avec tatsu pour monter en grade, le spam est inutile et l\'xp se farm très vite.')
+    .setImage('https://cdn.discordapp.com/attachments/705499848174206987/715621316669210654/unknown.png')
+    
+  client.on('message', message => {
+    if (!message.guild) return;
+
+    if (message.content === 'aziuizecjnyzetgcziy') {
+       message.channel.send(role);
+    }
+});
+
+//Pings 
+const pings = new discord.MessageEmbed()
+    .setColor('#FEE0E2')
+    .setAuthor('__Les Pings :__', 'https://cdn.discordapp.com/attachments/648412438219325461/724619286924230666/a_762309dc83e08f460fd3c269aeaf8f3c.gif' )
+    .setField('Cliquez sur les réactions pour avoir les rôles {pings}, vous aurez une notifications à chaque event proposé, jeux ou nouveauté.',':cherry_blossom: ⊱ Event \n :tanabata_tree: ⊱ Jeux \n :star2: ⊱ Nouveautés')
+client.on('message', message => {
+    if (!message.guild) return;
+
+    if (message.content === 'jkdxcsjhdfcujdrfecikesdol') {
+       message.channel.send(pings);
+    }
+});
+
+//Equipes
+const equipes  = new discord.MessageEmbed()
+    .setColor('#FEE0E2')
+    .setAuthor('__Les Equipes :__', 'https://cdn.discordapp.com/attachments/648412438219325461/724619286924230666/a_762309dc83e08f460fd3c269aeaf8f3c.gif' )
+    .setField('choisissez votre camp entre les démons et les pourfendeurs.',':fire: ⊱ Pourfendeurs  \n :knife: ⊱ Démons')
+    client.on('message', message => {
+        if (!message.guild) return;
+    
+        if (message.content === 'ergegegneuihdbvuhbeah') {
+           message.channel.send(equipes);
+        }
+    });
