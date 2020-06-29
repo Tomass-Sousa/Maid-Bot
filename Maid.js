@@ -28,7 +28,7 @@ client.on('ready', () => {
 
 //bienvenue
 client.on('guildMemberAdd', member => {
-    const channel = member.guild.channels.cache.find(channel => channel.name === '〢☕accueil');
+    const channel = member.guild.channels.cache.find(channel => channel.name === '〢💮accueil');
     if (!channel) return;
     const url = member.user.avatarURL({ format: 'png', dynamic: true, size: 1024 })
     const welcome = new discord.MessageEmbed()
