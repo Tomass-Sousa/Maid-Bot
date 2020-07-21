@@ -52,16 +52,19 @@ client.on('guildMemberAdd', member => {
 });
 
 //kick
-client.on('message', message => {
+  client.on('message', message => {
     let messageArray = message.content.split(" ");
     let args = messageArray.slice(1);
 
     if(message.content.startsWith(".kick")){
-    if (message.author.bot) return;
+if(message.channel.type==="dm"||message.channel.type==="group") {
+    return message.reply('Tu te sens si seul ? Pauvre de toi. . ');
+}
     if(!message.member.hasPermission(["KICK_MEMBERS"],  ["BAN_MEMBERS"],  ["ADMINISTRATOR"])) return message.channel.send("Tu n'as pas la permission de faire cette commande.")
 
     let kickMember = message.mentions.members.first() //|| message.guild.members.get(args[0])
-    if(!kickMember) return message.channel.send("Tu dois mentionner quelqu'un❌")
+    if(!kickMember) return message.channel.send("Tu n'as donné aucun utilisateur à kick...")
+
 
     let reason = args.slice(1).join(" ")
     if(!reason) reason = "Aucune raison donnée."
@@ -69,20 +72,16 @@ client.on('message', message => {
     if(!message.guild.me.hasPermission(["KICK_MEMBERS"], ["ADMINISTRATOR"])) return message.channel.send("Je n'ai pas la permission de faire ça.")
     
     const kick = new discord.MessageEmbed()
-        .setColor('#ffdfdf') 
-        .setTitle("• ⊰ Hiku\'s Coffee ⊱ •")
-        .setDescription("Membre correctement expulsé ✅")
-        .addField(`Le membre a bien été kick pour la raison: ${reason}`, "A plus dans le bus")
-        .setTimestamp()
-        .setFooter("Non mais après si il fait le con. . .")
+        .setTitle("Utilisateur kick!")
+        .setDescription("Un utilisateur a été kick du serveur")
+        .addField(`Le membre a bien été kick pour la raison: ${reason}`, "(logs envoyé dans le salon)")
+        .setFooter("Non mais aussi si il fait des bêtises...")
         message.channel.send(kick)
 
     const msgKick = new discord.MessageEmbed()
-        .setColor('#ffdfdf') 
         .setTitle(`Tu as été kick du serveur ${message.guild.name}!`)
-        .setDescription("La police des frontières t'as expulsée")
-        .addField(`${message.member.user.tag} t'as kick pour la raison suivante: ${reason}`, "Une erreur ça arrive. . .")
-        .setTimestamp()
+        .setDescription("Tu as fait une bêtise et un modérateur t'as kick..")
+        .addField(`${message.member.user.tag} t'as kick pour la raison suivante: ${reason}`, "Fais plus attention !")
     kickMember.send(msgKick).then(() =>
     kickMember.kick()).catch(err => console.log(err))
 
@@ -96,31 +95,29 @@ client.on('message', message => {
     let member = messageArray.slice(2);
 
     if(message.content.startsWith(".ban")){
-    if (message.author.bot) return;
+        if(message.channel.type==="dm"||message.channel.type==="group") {
+			return message.reply('Tu te sens si seul ? Pauvre de toi. . ');
+		}
     if(!message.member.hasPermission(["BAN_MEMBERS"], ["ADMINISTRATOR"])) return message.channel.send("Tu n'as pas la permission de faire cette commande.")
 
     let banMember = message.mentions.members.first() //|| message.guild.members.get(args[0])
-    if(!banMember) return message.channel.send("Tu dois mentionner quelqu'un.")
-
+    if(!banMember) return message.channel.send("Tu n'as donné aucun utilisateur à bannir...");
     let reason = args.slice(1).join(" ")
     if(!reason) reason = "Aucune raison donnée."
 
     if(!message.guild.me.hasPermission(["BAN_MEMBERS"], ["ADMINISTRATOR"])) return message.channel.send("Je n'ai pas la permission de faire ça.")
     
     const ban = new discord.MessageEmbed()
-        .setColor('#ffdfdf') 
-        .setTitle("Hiku\'s Coffee")
-        .setDescription("Membre correctement banni :cherry_blossom:")
-        .addField(`Le membre a bien été banni pour la raison: ${reason}`, '︶︶︶︶︶︶︶︶︶︶︶︶︶︶︶︶︶₊˚ˑ༄' )
-        .setTimestamp()
-        message.channel.send(ban)
+        .setTitle("Utilisateur banni!")
+        .setDescription("Un utilisateur a été banni du serveur")
+        .addField(`Le membre a bien été banni pour la raison: ${reason}`, "(logs envoyé dans le salon)")
+        .setFooter("Non mais aussi si il fait des bêtises...")
+    message.channel.send(ban)
    
     const msgBan = new discord.MessageEmbed()
-        .setColor('#ffdfdf') 
         .setTitle(`Tu as été banni du serveur ${message.guild.name}!`)
-        .setDescription("Le BanHammer t'as frappé")
-        .addField(`${message.member.user.tag} t'as banni pour la raison suivante: ${reason}`, "Sayonara !")
-        .setTimestamp()
+        .setDescription("Tu as fait une bêtise et un modérateur t'as banni..")
+        .addField(`${message.member.user.tag} t'as banni pour la raison suivante: ${reason}`, "Fais plus attention !")
     banMember.send(msgBan).then(() =>
     banMember.ban()).catch(err => console.log(err))
 
