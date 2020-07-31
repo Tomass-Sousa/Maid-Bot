@@ -2,8 +2,8 @@
 
 //Start
 const discord = require('discord.js');
-const { prefix, DISCORD_TOKEN} = require('./config.json')
 const client = new discord.Client();
+const { prefix, DISCORD_TOKEN} = require('./config.json')
 
 //Le Point Help
 const help = new discord.MessageEmbed()
@@ -108,19 +108,18 @@ client.on('message', message => {
     if(!message.guild.me.hasPermission(["BAN_MEMBERS"], ["ADMINISTRATOR"])) return message.channel.send("Je n'ai pas la permission de faire ça.")
     
     const ban = new discord.MessageEmbed()
-        .setTitle("Utilisateur banni!")
-        .setDescription("Un utilisateur a été banni du serveur")
-        .addField(`Le membre a bien été banni pour la raison: ${reason}`, "(logs envoyé dans le salon)")
-        .setFooter("Non mais aussi si il fait des bêtises...")
+        .setTitle("Maid a bien expulsé le client du café.")
+        .setColor(`#ffdfdf`)
+        .setDescription(`L'utilisateur a été banni`)
+        .addField(`${message.member.user.username} t'as banni pour la raison suivante: ${reason}`, "Si le ban n'est pas justifié, merci de contacter un pilier.")
     message.channel.send(ban)
    
     const msgBan = new discord.MessageEmbed()
-        .setTitle(`Tu as été banni du serveur ${message.guild.name}!`)
-        .setDescription("Tu as fait une bêtise et un modérateur t'as banni..")
-        .addField(`${message.member.user.tag} t'as banni pour la raison suivante: ${reason}`, "Fais plus attention !")
+        .setTitle(`Tu as été banni du serveur Hiku's Coffee.`)
+        .setColor(`#ffdfdf`)
+        .addField(`${message.member.user.username} t'as banni pour la raison suivante: ${reason}`, "Bonne continuation")
     banMember.send(msgBan).then(() =>
     banMember.ban()).catch(err => console.log(err))
-
 }
 });
 
