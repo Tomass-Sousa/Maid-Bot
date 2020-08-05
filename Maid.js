@@ -300,23 +300,3 @@ client.on('message', message => {
 
 //login
 client.login(DISCORD_TOKEN);
-
-//Staff
-const Staff = new discord.MessageEmbed()
-     .setColor('#223770')
-     .setAuthor('Hiku\'s Coffee :', 'https://cdn.discordapp.com/attachments/648412438219325461/724619286924230666/a_762309dc83e08f460fd3c269aeaf8f3c.gif' )
-     .setDescription('Voice le staff du café :')
-     .addField('__Fondatrice :__', 'Hiku')
-     .addField('__Modérateurs :__', 'Toast \n Aik')
-     .addField('__Helpeurs :__', 'Ryuu \n Yuel')  
-     .addField('__Sécurité :__', 'Maid')
-     .addField('__Les piliers représentent le staff du café__','Respectez les et respectez leur travail')
-     .setImage('https://i.imgur.com/BLd68S7.jpg')
-    
-     client.on('message', message => {
-        if (!message.guild) return;
-
-        if (message.content === 'Aik el bogossito') {
-           message.channel.send(Staff);
-        }
-});
