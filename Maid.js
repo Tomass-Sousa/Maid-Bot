@@ -6,7 +6,6 @@ const client = new discord.Client();
 const { prefix, DISCORD_TOKEN} = require('./config.json')
 
 const moment = require("moment");
-const m = require("moment-duration-format");
 
 //Le Point Help (.help)
 const help = new discord.MessageEmbed()
