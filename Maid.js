@@ -25,7 +25,7 @@ client.on('ready', () => {
     console.log(`Connecté en tant que ${client.user.tag}!`);
       client.user.setPresence({activity: {type: 'WATCHING',name: 'le café'}, status: 'dnd'});
   });
-
+  
 //bienvenue
 client.on('guildMemberAdd', member => {
   const channel = member.guild.channels.cache.find(channel => channel.name === '〢💮accueil');
@@ -37,7 +37,7 @@ client.on('guildMemberAdd', member => {
      .setColor(`#ffdfdf`)
      .setThumbnail(url)
      .setAuthor('Hiku\'s Coffee', 'https://cdn.discordapp.com/attachments/648412438219325461/724619286924230666/a_762309dc83e08f460fd3c269aeaf8f3c.gif' )
-     .setDescription("Un nouveau client est arrivé: " + member.user.tag + ",\n tu es notre `" + member.guild.memberCount + "`ème client.")
+     .setDescription(`Un nouveau client est arrivé: ${member.user.username}\n Tu es notre ${member.guild.memberCount}  ème client.`)
      .addField("Avant tout : ", "• Lire le <#711111570163499018> \n • Prendre ses <#716566179967139963> \n • Et regarder le <#715954917327765504> \n ︶︶︶︶︶︶︶︶︶︶︶︶₊˚ˑ༄")
      .setImage('https://cdn.discordapp.com/attachments/705499848174206987/715828030626594846/c5c9476988f466622a97bafe5866ac93cc3ea0d2_hq.gif')
 
@@ -238,12 +238,12 @@ client.on('message', message => {
      if(args[0] == undefined);
      if(!Number(args[0])) return message.channel.send(".bi <id> <raison>");
   
-  //Ne pas toucher ❌
+  //Ne pas toucher 
   
      if(Number(args[0])){
     let ban = client.users.fetch(args[0])
     .then(users => message.guild.members.ban(users.id)).then(users => console.log()).catch(error => {
-    if(error.code !== 1844 ) return message.channel.send('**ID INVALIDE**') && message.react('❌')}
+    if(error.code !== 1844 ) return message.delete() && message.channel.send('**ID INVALIDE**')}
     ).then(error => { if(!error) message.channel.send(banheu)})
     
   }} 
@@ -281,12 +281,9 @@ client.on('message', message => {
     .addField(`**Nombre de rôles :**`, `**${message.guild.roles.cache.size}**`)
     .setFooter(`Demandé par ${message.member.user.tag}`)
     .setTimestamp()
-  
     
     message.channel.send(serverinf)
   }
-  
-  
   })
 
 //Bannumber (.totalban)
