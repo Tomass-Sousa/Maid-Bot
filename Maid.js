@@ -5,8 +5,6 @@ const discord = require('discord.js');
 const client = new discord.Client();
 const { prefix, DISCORD_TOKEN} = require('./config.json')
 
-const moment = require("moment");
-
 //Le Point Help (.help)
 const help = new discord.MessageEmbed()
     .setColor('#ffdfdf')
@@ -33,7 +31,6 @@ client.on('guildMemberAdd', member => {
   const channel = member.guild.channels.cache.find(channel => channel.name === '〢💮accueil');
   if (!channel) return;
   const url = member.user.avatarURL({ format: 'png', dynamic: true, size: 1024 })
-  const date = moment(member.user.createdAt).format("D/MM/YY à HH:mm")
   const welcome = new discord.MessageEmbed()
 
      .setTitle(`Bienvenue dans notre café !`)
@@ -43,7 +40,6 @@ client.on('guildMemberAdd', member => {
      .setDescription(`Un nouveau client est arrivé: ${member.user.tag}.\n Tu es notre ${member.guild.memberCount}ème client.`)
      .addField("Avant tout : ", "• Lire le <#711111570163499018> \n • Prendre ses <#716566179967139963> \n • Et regarder le <#715954917327765504> \n ︶︶︶︶︶︶︶︶︶︶︶︶₊˚ˑ༄")
      .setImage('https://cdn.discordapp.com/attachments/705499848174206987/715828030626594846/c5c9476988f466622a97bafe5866ac93cc3ea0d2_hq.gif')
-     .setFooter(date)
 
   channel.send(welcome)
 });
