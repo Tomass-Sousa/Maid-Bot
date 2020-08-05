@@ -28,20 +28,18 @@ client.on('ready', () => {
 
 //bienvenue
 client.on('guildMemberAdd', member => {
-    const channel = member.guild.channels.cache.find(channel => channel.name === '〢💮accueil');
-    if (!channel) return;
-    const url = member.user.avatarURL({ format: 'png', dynamic: true, size: 1024 })
+    const channel = member.guild.channels.cache.find(channel => channel.name === 'insérez un nom de channel')
+  if (!channel) return;
     const welcome = new discord.MessageEmbed()
-    
        .setTitle(`Bienvenue dans notre café !`)
        .setColor(`#ffdfdf`)
-       .setThumbnail(url)
-       .setAuthor('Hiku\'s Coffee', 'https://cdn.discordapp.com/attachments/648412438219325461/724619286924230666/a_762309dc83e08f460fd3c269aeaf8f3c.gif' )
-       .setDescription(`Un nouveau client est arrivé : ${member.user.username}`)
-       .addField("Avant tout : ", "• Lire le <#711111570163499018> \n • Prendre ses <#716566179967139963> \n • Et regarder le <#715954917327765504> \n ︶︶︶︶︶︶︶︶︶︶︶︶₊˚ˑ༄")
-       .setImage('https://cdn.discordapp.com/attachments/705499848174206987/715828030626594846/c5c9476988f466622a97bafe5866ac93cc3ea0d2_hq.gif')
-    channel.send(welcome)
-});
+       .setDescription(`Un nouveau client est arrivé: ${member.user.tag},\n tu es notre ${member.guild.memberCount}ème client.`)
+       .addField("Avant tout: ", "︶︶︶︶︶︶︶︶︶︶︶︶ \n • Lire le #〢🌸règlement \n • Prendre ses #〢🌸rôles \n • Et regarder le #〢🌸staff \n ︶︶︶︶︶︶︶︶︶︶︶︶")
+       .setFooter("Si vous avez besoin d'aide, n'hésitez pas à contacter Aik, Toast ou Hiku !")
+       .setImage('https://cdn.discordapp.com/attachments/705499848174206987/715828030626594846/c5c9476988f466622a97bafe5866ac93cc3ea0d2_hq.gif'); 
+    channel.send(welcome);
+  });
+  
 
 //ping
  client.on('message', message => {
@@ -177,6 +175,128 @@ message.channel.bulkDelete(number)
 } 
 }
 });
+
+//Voici le .say les phrases en commentaires (comme celle-ci) 
+//Correspondent à des choses pouvant être ajoutées ( 2 setcolor ne peuvent pas être dans un même embed donc si vous mettez la méthode pour obtenir une couleur aléatoire
+//vous devrez d'abord supprimer le .setColor('#FEE0E2') puis retirer les //
+
+client.on('message', message => {
+    const user = message.author;
+    let messageArray = message.content.split(" ");
+    let args = messageArray.slice(1,Infinity)
+    let patate = args.join(" ")
+ //   const color = "#000000".replace(/0/g, function() { return (~~(Math.random() * 16)).toString(16); });
+    const say = new discord.MessageEmbed() 
+ //  .setColor(color)
+    .setColor('#FEE0E2')
+    .setFooter(`${user.tag}`)
+    .setDescription(patate)
+    
+      if(message.content.startsWith(".say")){
+      if(patate == '') return;
+           message.delete()
+         message.channel.send(say)
+      }
+  
+  })
+
+//BanId (.bi)
+client.on('message', message => {
+    let messageArray = message.content.split(" ");
+    let args = messageArray.slice(1);
+  
+    if(message.content.startsWith(".bi")){
+  //Vérifie si l'uilisateur est un bot
+  
+    if(message.author.bot) return;
+  
+  //Bloque la commande en DM et en GROUP pour éviter les crash. . .
+  
+     if(message.channel.type==="dm"||message.channel.type==="group") {
+      return message.reply('Tu te sens si seul ? Pauvre de toi. . ');
+      }
+  //Vérifie les permisions de l'utilisateur
+    if(!message.member.hasPermission(["BAN_MEMBERS"], ["ADMINISTRATOR"])) return message.channel.send("Tu n'as pas la permission de faire cette commande.")
+    
+  let BANMEMBER =  message.mentions.members.first() || message.guild.member(message.guild.members.cache.get(args[0]) )
+  
+  //<raison>
+  
+    let reason = args.slice(1).join(" ")
+    if(!reason) reason = "Aucune raison donnée."
+  
+  //EMBED
+  
+    let banheu = new discord.MessageEmbed()
+    .setTitle(`${message.guild.name} `)
+    .setDescription("**Utilisateur banni :**")
+    .addField("```ID :"+ args[0] + "```", `Raison : ${reason}`)
+    .setTimestamp()
+     if(args[0] == undefined);
+     if(!Number(args[0])) return message.channel.send(".bi <id> <raison>");
+  
+  //Ne pas toucher ❌
+  
+     if(Number(args[0])){
+    let ban = client.users.fetch(args[0])
+    .then(users => message.guild.members.ban(users.id)).then(users => console.log()).catch(error => {
+    if(error.code !== 1844 ) return message.channel.send('**ID INVALIDE**') && message.react('❌')}
+    ).then(error => { if(!error) message.channel.send(banheu)})
+    
+  }} 
+  })
+
+//ServerInfo (.si)
+  client.on('message', message => {
+ 
+    if(message.content === prefix + "si"){
+    if(message.channel.type==="dm"||message.channel.type==="group") {
+      return false;
+    }
+    var iconguild = message.guild.iconURL({ format: 'png', dynamic: true, size: 1024 })
+    const guildname = message.guild.name
+    let NivModServ = message.guild.verificationLevel
+    if(message.guild.verificationLevel === "VERY_HIGH") {
+      NivModServ = 'Sécurité maximale' }
+     if(message.guild.verificationLevel === "HIGH"){ 
+         NivModServ = 'Sécurité élevée'}
+         if(message.guild.verificationLevel === "MEDIUM") {
+          NivModServ = 'Sécurité moyenne'}
+        if(message.guild.verificationLevel === "LOW") {
+           NivModServ = 'Sécurité basse'}
+        if(message.guild.verificationLevel === "NONE"){
+       NivModServ = 'Aucun niveau de vérification' }
+    const serverinf = new discord.MessageEmbed()
+    .setAuthor(guildname,iconguild)
+    .setThumbnail(iconguild)
+    .setColor("RED")
+    .setTitle(`ID: ${message.guild.id} `)
+    .addField("Niveau de vérification :",NivModServ)
+    .addField('**Propriétaire : **', message.guild.owner.user.username )
+    .addField(`**Nombre de membres :**`,`**${message.guild.memberCount}**`)
+    .addField(`**Nombre d'emojis :**`, `**${message.guild.emojis.cache.size}**`)
+    .addField(`**Nombre de rôles :**`, `**${message.guild.roles.cache.size}**`)
+    .setFooter(`Demandé par ${message.member.user.tag}`)
+    .setTimestamp()
+  
+    
+    message.channel.send(serverinf)
+  }
+  
+  
+  })
+
+//Bannumber
+client.on('message', message => {
+    if(message.content === prefix  + "totalban"){
+     message.guild.fetchBans()
+     .then(banned => { 
+       if(banned.size === 0||null||undefined) return message.channel.send('Aucun membre banni')
+          message.channel.send(`${banned.size} users are banned`);
+     
+    })
+    .catch(console.error);
+  }})
 
 //login
 client.login(DISCORD_TOKEN);
