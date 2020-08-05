@@ -5,7 +5,7 @@ const discord = require('discord.js');
 const client = new discord.Client();
 const { prefix, DISCORD_TOKEN} = require('./config.json')
 
-//Le Point Help
+//Le Point Help (.help)
 const help = new discord.MessageEmbed()
     .setColor('#ffdfdf')
     .setTitle('Aide')
@@ -13,11 +13,11 @@ const help = new discord.MessageEmbed()
     .setDescription('Retrouve la liste des commandes ici')
     .addField("__.ping__ ", "Ping le bot.")
     .addField("__.help__", "Affiche cette page.")
+    .addField("__.say__", "Maid diras votre message.")
     .addField("__.info__", "Voir les createurs du bot.")
-    .addField("__.ban__", "Permet de bannir un membre.")
-    .addField("__.kick__", "Permet d'expulser un membre.")
     .addField("__.avatar__", "Affiche l'avatar du membre.")
     .addField("__.purge__", "Pour effacer un nombre de messages.")
+    .addField("__.si__", "Pour voir les informations du serveur")
     .setImage('https://cdn.discordapp.com/attachments/705499848174206987/716251926710452234/OK6W_koKDTOqqqLDbIoPApKuI1qnjWj8DtVkFCcj45w.gif');
 
 //log
@@ -41,7 +41,7 @@ client.on('guildMemberAdd', member => {
   });
   
 
-//ping
+//ping (.ping)
  client.on('message', message => {
      if (message.content === prefix + 'ping' ){
      if (message.author.bot) return;
@@ -49,7 +49,7 @@ client.on('guildMemberAdd', member => {
      }
 });
 
-//kick
+//kick (.kick)
   client.on('message', message => {
     let messageArray = message.content.split(" ");
     let args = messageArray.slice(1);
@@ -86,7 +86,7 @@ if(message.channel.type==="dm"||message.channel.type==="group") {
 }
 });
 
-//ban
+//ban (.ban)
 client.on('message', message => {
     let messageArray = message.content.split(" ");
     let args = messageArray.slice(1);
@@ -121,7 +121,7 @@ client.on('message', message => {
 }
 });
 
-//Pour voir l'avatar
+//Pour voir l'avatar (.avatar)
 client.on('message', message => {
     if (!message.guild) return;
     if (message.author.bot) return;
@@ -135,7 +135,7 @@ client.on('message', message => {
 }
 });
 
-//help
+//help (.help)
 client.on('message', message => {
      if (!message.guild) return;
      if (message.author.bot) return;
@@ -145,7 +145,7 @@ client.on('message', message => {
      }
 });    
 
-//Info Bot
+//Info Bot (.info)
 client.on('message', message => {
     if (!message.guild) return;
     if (message.author.bot) return;
@@ -154,7 +154,7 @@ client.on('message', message => {
     }
 });
 
-//Purge 
+//Purge (.purge)
 client.on('message', message => {
     if (!message.guild) return;
 
@@ -286,7 +286,7 @@ client.on('message', message => {
   
   })
 
-//Bannumber
+//Bannumber (.totalban)
 client.on('message', message => {
     if(message.content === prefix  + "totalban"){
      message.guild.fetchBans()
@@ -300,25 +300,4 @@ client.on('message', message => {
 
 //login
 client.login(DISCORD_TOKEN);
-
-//Staff
-const Staff = new discord.MessageEmbed()
-     .setColor('#223770')
-     .setAuthor('Hiku\'s Coffee :', 'https://cdn.discordapp.com/attachments/648412438219325461/724619286924230666/a_762309dc83e08f460fd3c269aeaf8f3c.gif' )
-     .setDescription('Voici le staff du café :')
-     .addField('__Fondatrice :__', 'Hiku')
-     .addField('__Modérateurs :__', 'Toast \n Aik')
-     .addField('__Helpeurs :__', 'Ryuu \n Yuel')  
-     .addField('__Sécurité :__', 'Maid')
-     .addField('__Les piliers représentent le staff du café__','Respectez les et respectez leur travail')
-     .setImage('https://i.imgur.com/BLd68S7.jpg')
-     
-
-     client.on('message', message => {
-        if (!message.guild) return;
-
-        if (message.content === 'Aik el bogossito') {
-           message.channel.send(Staff);
-        }
-});
 
