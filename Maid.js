@@ -33,8 +33,8 @@ client.on('guildMemberAdd', member => {
   const channel = member.guild.channels.cache.find(channel => channel.name === '〢💮accueil');
   if (!channel) return;
   const url = member.user.avatarURL({ format: 'png', dynamic: true, size: 1024 })
-  const welcome = new discord.MessageEmbed()
   const date = moment(member.user.createdAt).format("D/MM/YY à HH:mm")
+  const welcome = new discord.MessageEmbed()
 
      .setTitle(`Bienvenue dans notre café !`)
      .setColor(`#ffdfdf`)
