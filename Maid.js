@@ -5,6 +5,9 @@ const discord = require('discord.js');
 const client = new discord.Client();
 const { prefix, DISCORD_TOKEN} = require('./config.json')
 
+const moment = require("moment");
+const m = require("moment-duration-format");
+
 //Le Point Help (.help)
 const help = new discord.MessageEmbed()
     .setColor('#ffdfdf')
@@ -13,7 +16,7 @@ const help = new discord.MessageEmbed()
     .setDescription('Retrouve la liste des commandes ici')
     .addField("__.ping__ ", "Ping le bot.")
     .addField("__.help__", "Affiche cette page.")
-    .addField("__.say__", "Maid diras votre message.")
+    .addField("__.say__", "Affiche votre message en embed.")
     .addField("__.info__", "Voir les createurs du bot.")
     .addField("__.avatar__", "Affiche l'avatar du membre.")
     .addField("__.purge__", "Pour effacer un nombre de messages.")
@@ -28,18 +31,23 @@ client.on('ready', () => {
 
 //bienvenue
 client.on('guildMemberAdd', member => {
-    const channel = member.guild.channels.cache.find(channel => channel.name === 'insérez un nom de channel')
+  const channel = member.guild.channels.cache.find(channel => channel.name === '〢💮accueil');
   if (!channel) return;
-    const welcome = new discord.MessageEmbed()
-       .setTitle(`Bienvenue dans notre café !`)
-       .setColor(`#ffdfdf`)
-       .setDescription(`Un nouveau client est arrivé: ${member.user.tag},\n tu es notre ${member.guild.memberCount}ème client.`)
-       .addField("Avant tout: ", "︶︶︶︶︶︶︶︶︶︶︶︶ \n • Lire le #〢🌸règlement \n • Prendre ses #〢🌸rôles \n • Et regarder le #〢🌸staff \n ︶︶︶︶︶︶︶︶︶︶︶︶")
-       .setFooter("Si vous avez besoin d'aide, n'hésitez pas à contacter Aik, Toast ou Hiku !")
-       .setImage('https://cdn.discordapp.com/attachments/705499848174206987/715828030626594846/c5c9476988f466622a97bafe5866ac93cc3ea0d2_hq.gif'); 
-    channel.send(welcome);
-  });
-  
+  const url = member.user.avatarURL({ format: 'png', dynamic: true, size: 1024 })
+  const welcome = new discord.MessageEmbed()
+  const date = moment(member.user.createdAt).format("D/MM/YY à HH:mm")
+
+     .setTitle(`Bienvenue dans notre café !`)
+     .setColor(`#ffdfdf`)
+     .setThumbnail(url)
+     .setAuthor('Hiku\'s Coffee', 'https://cdn.discordapp.com/attachments/648412438219325461/724619286924230666/a_762309dc83e08f460fd3c269aeaf8f3c.gif' )
+     .setDescription(`Un nouveau client est arrivé: ${member.user.tag}.\n Tu es notre ${member.guild.memberCount}ème client.`)
+     .addField("Avant tout : ", "• Lire le <#711111570163499018> \n • Prendre ses <#716566179967139963> \n • Et regarder le <#715954917327765504> \n ︶︶︶︶︶︶︶︶︶︶︶︶₊˚ˑ༄")
+     .setImage('https://cdn.discordapp.com/attachments/705499848174206987/715828030626594846/c5c9476988f466622a97bafe5866ac93cc3ea0d2_hq.gif')
+     .setFooter(date)
+
+  channel.send(welcome)
+});
 
 //ping (.ping)
  client.on('message', message => {
