@@ -298,9 +298,6 @@ client.on('message', message => {
     .catch(console.error);
   }})
 
-//login
-client.login(DISCORD_TOKEN);
-
 //Boosters
 const Boosters = new discord.MessageEmbed()
     .setColor('#F0D2EA')
@@ -324,4 +321,8 @@ const Boosters = new discord.MessageEmbed()
        message.channel.send(Boosters);
     }
 });    
+
+//login
+client.login(DISCORD_TOKEN);
+
 
