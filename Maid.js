@@ -298,21 +298,5 @@ client.on('message', message => {
     .catch(console.error);
   }})
 
-//Réponses du bot 
-if(message.content = 'Salut' || 'Bonjour' || 'Coucou' || 'Hey')
-{
- message.channel.send("Coucou")
-}
-
-if(message.content = 'Ntm' || 'ntm' || 'Fdp' || 'fdp' || 'Enculé' || 'enculé')
-{
-  message.channel.send("Surveille ton langage.")
-}
-
-if(message.content = 'Bonui' || 'bonui' || 'Nenuit' || 'nenuit' || 'Bonne nuit' || 'bonne nuit')
-{
- message.channel.send("Fait de beaux rêves.")
-}
-
 //login
 client.login(DISCORD_TOKEN);
