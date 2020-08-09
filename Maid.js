@@ -38,7 +38,7 @@ client.on('guildMemberAdd', member => {
      .setThumbnail(url)
      .setAuthor('Hiku\'s Coffee', 'https://cdn.discordapp.com/attachments/648412438219325461/724619286924230666/a_762309dc83e08f460fd3c269aeaf8f3c.gif' )
      .setDescription(`Un nouveau client est arrivé: ${member.user.username}\n Tu es notre ${member.guild.memberCount}ème client.`)
-     .addField("Avant tout : ", "┊ ‧₊˚๑・Lire le <#711111570163499018> \n ┊ ‧₊˚๑・Prendre ses <#716566179967139963> \n ┊ ‧₊˚๑・Et regarder le <#715954917327765504> \n ╰─────────────────────✦ ")
+     .addField("Avant tout : ", "┊ ‧₊˚๑・Lire le <#711111570163499018> \n ┊ ‧₊˚๑・Prendre ses <#716566179967139963> \n ┊ ‧₊˚๑・Et regarder le <#715954917327765504> \n ╰────────────────────✦ ")
      .setImage('https://i.imgur.com/zfQogMb.gif')
 
   channel.send(welcome)
