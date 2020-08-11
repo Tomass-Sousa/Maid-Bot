@@ -23,7 +23,7 @@ const help = new discord.MessageEmbed()
 //log
 client.on('ready', () => {
     console.log(`Connecté en tant que ${client.user.tag}!`);
-      client.user.setPresence({activity: {type: 'WATCHING',name: 'le café'}, status: 'Dnd'});
+      client.user.setPresence({activity: {type: 'WATCHING',name: 'le café'}, status: 'dnd'});
   });
   
 //bienvenue
