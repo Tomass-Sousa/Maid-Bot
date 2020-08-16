@@ -31,7 +31,6 @@ const help = new discord.MessageEmbed()
          membre =  member.guild.memberCount ;
           let activities_list = [
             `${membre} personnes`, 
-            `.help !`,
             `${membre} personnes`, 
             ]; // liste d'array sous forme de const 
         
@@ -41,9 +40,7 @@ const help = new discord.MessageEmbed()
                url: "https://www.twitch.tv/HikuCoffee"
              }); // met une des phrases et le type de statut
         }, 5000); // Intervalle 5 sec(c'est en ms)
-    });
-    
-      
+    }); 
     
     client.on("guildMemberRemove", member => {  //evenement de leave donc ca met a jour quand y'a un -
       client.user.setStatus("dnd") 
