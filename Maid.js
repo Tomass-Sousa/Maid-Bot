@@ -30,8 +30,8 @@ const help = new discord.MessageEmbed()
          let membre = 0
          membre =  member.guild.memberCount ;
           let activities_list = [
-            `${membre} personnes`, 
-            `${membre} personnes`, 
+            `${membre} clients`, 
+            `${membre} clients`, 
             ]; // liste d'array sous forme de const 
         
             const index = Math.floor(Math.random() * (activities_list.length - 1) + 1); //Nombre entre 1 et 3
@@ -48,8 +48,8 @@ const help = new discord.MessageEmbed()
          let membre = 0
          membre =  member.guild.memberCount ;
           let activities_list = [
-            `${membre} personnes`, 
-            `${membre} personnes`, 
+            `${membre} clients`, 
+            `${membre} clients`, 
             ]; // liste d'array sous forme de const 
         
             const index = Math.floor(Math.random() * (activities_list.length - 1) + 1); //Nombre entre 1 et 3
