@@ -49,7 +49,6 @@ const help = new discord.MessageEmbed()
          membre =  member.guild.memberCount ;
           let activities_list = [
             `${membre} personnes`, 
-            `.help !`,
             `${membre} personnes`, 
             ]; // liste d'array sous forme de const 
         
