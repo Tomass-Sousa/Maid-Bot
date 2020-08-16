@@ -20,11 +20,49 @@ const help = new discord.MessageEmbed()
     .addField("__.si__", "Pour voir les informations du serveur")
     .setImage('https://cdn.discordapp.com/attachments/705499848174206987/716251926710452234/OK6W_koKDTOqqqLDbIoPApKuI1qnjWj8DtVkFCcj45w.gif');
 
-//log
-client.on('ready', () => {
-    console.log(`Connecté en tant que ${client.user.tag}!`);
-      client.user.setPresence({activity: {type: 'WATCHING',name: `${client.users.cache.size} clients`}, status: 'dnd'});
-  });
+//Status Maid
+    client.on('ready', () => {
+  
+      console.log(`Connecté en tant que ${client.user.tag}!`); })
+    client.on("guildMemberAdd", member => {  //event de join ca met a jour quand qq join 
+      client.user.setStatus("dnd") 
+        setInterval(() => {
+         let membre = 0
+         membre =  member.guild.memberCount ;
+          let activities_list = [
+            `${membre} personnes`, 
+            `.help !`,
+            `${membre} personnes`, 
+            ]; // liste d'array sous forme de const 
+        
+            const index = Math.floor(Math.random() * (activities_list.length - 1) + 1); //Nombre entre 1 et 3
+            client.user.setActivity(activities_list[index], {
+               type: "WATCHING",
+               url: "https://www.twitch.tv/HikuCoffee"
+             }); // met une des phrases et le type de statut
+        }, 5000); // Intervalle 5 sec(c'est en ms)
+    });
+    
+      
+    
+    client.on("guildMemberRemove", member => {  //evenement de leave donc ca met a jour quand y'a un -
+      client.user.setStatus("dnd") 
+        setInterval(() => {
+         let membre = 0
+         membre =  member.guild.memberCount ;
+          let activities_list = [
+            `${membre} personnes`, 
+            `.help !`,
+            `${membre} personnes`, 
+            ]; // liste d'array sous forme de const 
+        
+            const index = Math.floor(Math.random() * (activities_list.length - 1) + 1); //Nombre entre 1 et 3
+            client.user.setActivity(activities_list[index], {
+               type: "WATCHING",
+               url: "https://www.twitch.tv/HikuCoffee"
+             }); // met une des phrases et le type de statut
+        }, 5000); // Intervalle 5 sec(c'est en ms)
+    });
   
 //bienvenue
 client.on('guildMemberAdd', member => {
