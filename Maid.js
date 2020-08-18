@@ -346,12 +346,12 @@ const Boosters = new discord.MessageEmbed()
     .addField(":cherry_blossom: 7 ⊱", "Envoyer des liens et des images sur les channels.")
     .addField(":cherry_blossom: 8 ⊱", "Avoir une place tout en haut de la liste des membres.")
     .addField(":cherry_blossom: 9 ⊱", "Contacter le staff plus facilement, en mp ou a l'écrit.")
-    .setImage('https://i.imgur.com/JY3cBTV.jpg')
+    .setImage('https://i.imgur.com/oVC0po1.jpg') 
     
   client.on('message', message => {
     if (!message.guild) return;
 
-    if (message.content === "embedbooster") {
+    if (message.content === "embedboosterss") {
        message.channel.send(Boosters);
     }
 });   
