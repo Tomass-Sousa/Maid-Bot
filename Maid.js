@@ -330,31 +330,48 @@ client.on('message', message => {
      
     })
     .catch(console.error);
-  }})
+  }})  
 
-//Boosters
-const Boosters = new discord.MessageEmbed()
-    .setColor('#fee0e2')
-    .setAuthor('Les boosters :', 'https://cdn.discordapp.com/attachments/648412438219325461/724619286924230666/a_762309dc83e08f460fd3c269aeaf8f3c.gif' )
-    .setDescription('__En boostant le serveur vous aurez les avantages suivants:__')
-    .addField(":cherry_blossom: 1 ⊱", "Un rôle dj.")
-    .addField(":cherry_blossom: 2 ⊱", "Un rôle personnalisé.")
-    .addField(":cherry_blossom: 3 ⊱", "Une couleur au choix.")
-    .addField(":cherry_blossom: 4 ⊱", "Une priorité en vocal.")
-    .addField(":cherry_blossom: 5 ⊱", "Ajouter des emotes supplémentaires.")
-    .addField(":cherry_blossom: 6 ⊱", "Place prioritaire pour les events et autres.")
-    .addField(":cherry_blossom: 7 ⊱", "Envoyer des liens et des images sur les channels.")
-    .addField(":cherry_blossom: 8 ⊱", "Avoir une place tout en haut de la liste des membres.")
-    .addField(":cherry_blossom: 9 ⊱", "Contacter le staff plus facilement, en mp ou a l'écrit.")
-    .setImage('https://i.imgur.com/oVC0po1.jpg') 
+//Grades
+const role = new discord.MessageEmbed()
+    
+    .setTitle('Les pourfendeurs sont répartis en dix grades différents, du rang le plus bas au plus élevé.')
+    .setAuthor('Les Grades :', 'https://cdn.discordapp.com/attachments/648412438219325461/724619286924230666/a_762309dc83e08f460fd3c269aeaf8f3c.gif' )
+    .setDescription('1 ⊱ <@&711239854591049728> (300 pts) \n 2 ⊱ <@&712945730494660650> (1 000 pts) \n 3 ⊱ <@&711506317788971049> (3 000 pts) \n 4 ⊱ <@&713245195818500097> (10 000 pts) \n 5 ⊱ <@&713245189795348480> (30 000 pts) \n 6 ⊱ <@&713245183629590608> (50 000 pts) \n 7 ⊱ <@&713245177149521931> (70 000 pts) \n 8 ⊱ <@&713245169423745045> (100 000 pts) \n 9 ⊱ <@&713241995295981609> (150 000) \n 10 ⊱ <@&745010431269011529> (200 000 pts)')
     
   client.on('message', message => {
     if (!message.guild) return;
 
-    if (message.content === "embedboosterss") {
-       message.channel.send(Boosters);
+    if (message.content === 'aziuizecjnyzetgcziy') {
+       message.channel.send(role);
     }
-});   
+});
+
+//Pings 
+const pings = new discord.MessageEmbed()
+    .setColor('#FEE0E2')
+    .setAuthor('Les Pings :', 'https://cdn.discordapp.com/attachments/648412438219325461/724619286924230666/a_762309dc83e08f460fd3c269aeaf8f3c.gif' )
+    .addField('Cliquez sur les réactions pour avoir les rôles {pings}, vous aurez une notifications à chaque event proposé, jeux ou nouveauté.',':cherry_blossom: ⊱ Event \n :tanabata_tree: ⊱ Jeux \n :star2: ⊱ Nouveautés')
+client.on('message', message => {
+    if (!message.guild) return;
+
+    if (message.content === 'jkdxcsjhdfcujdrfecikesdol') {
+       message.channel.send(pings);
+    }
+});
+
+//Equipes
+const equipes  = new discord.MessageEmbed()
+    .setColor('#FEE0E2')
+    .setAuthor('Les Equipes :', 'https://cdn.discordapp.com/attachments/648412438219325461/724619286924230666/a_762309dc83e08f460fd3c269aeaf8f3c.gif' )
+    .addField('choisissez votre camp entre les démons et les pourfendeurs.',':fire: ⊱ Pourfendeurs  \n :knife: ⊱ Démons')
+    client.on('message', message => {
+        if (!message.guild) return;
+    
+        if (message.content === 'ergegegneuihdbvuhbeah') {
+           message.channel.send(equipes);
+        }
+    });
 
 //login
 client.login(DISCORD_TOKEN);  
