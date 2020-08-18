@@ -332,6 +332,30 @@ client.on('message', message => {
     .catch(console.error);
   }})
 
+//Boosters
+const Boosters = new discord.MessageEmbed()
+    .setColor('#275B94')
+    .setAuthor('Les boosters :', 'https://cdn.discordapp.com/attachments/648412438219325461/724619286924230666/a_762309dc83e08f460fd3c269aeaf8f3c.gif' )
+    .setDescription('__En boostant le serveur vous aurez les avantages suivants:__')
+    .addField(":cherry_blossom: 1 ⊱", "Un rôle dj.")
+    .addField(":cherry_blossom: 2 ⊱", "Un rôle personnalisé.")
+    .addField(":cherry_blossom: 3 ⊱", "Une couleur au choix.")
+    .addField(":cherry_blossom: 4 ⊱", "Une priorité en vocal.")
+    .addField(":cherry_blossom: 5 ⊱", "Ajouter des emotes supplémentaires.")
+    .addField(":cherry_blossom: 6 ⊱", "Place prioritaire pour les events et autres.")
+    .addField(":cherry_blossom: 7 ⊱", "Envoyer des liens et des images sur les channels.")
+    .addField(":cherry_blossom: 8 ⊱", "Avoir une place tout en haut de la liste des membres.")
+    .addField(":cherry_blossom: 9 ⊱", "Contacter le staff plus facilement, en mp ou a l'écrit.")
+    .setImage('https://i.imgur.com/JY3cBTV.jpg')
+    
+  client.on('message', message => {
+    if (!message.guild) return;
+
+    if (message.content === "embedbooster") {
+       message.channel.send(Boosters);
+    }
+});   
+
 //login
 client.login(DISCORD_TOKEN);  
 
