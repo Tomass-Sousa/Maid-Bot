@@ -336,8 +336,9 @@ client.on('message', message => {
 const role = new discord.MessageEmbed()
     
     .setTitle('Les pourfendeurs sont répartis en dix grades différents, du rang le plus bas au plus élevé.')
+    .setColor('#FEE0E2')
     .setAuthor('Les Grades :', 'https://cdn.discordapp.com/attachments/648412438219325461/724619286924230666/a_762309dc83e08f460fd3c269aeaf8f3c.gif' )
-    .setDescription('1 ⊱ <@&711239854591049728> (300 pts) \n 2 ⊱ <@&712945730494660650> (1 000 pts) \n 3 ⊱ <@&711506317788971049> (3 000 pts) \n 4 ⊱ <@&713245195818500097> (10 000 pts) \n 5 ⊱ <@&713245189795348480> (30 000 pts) \n 6 ⊱ <@&713245183629590608> (50 000 pts) \n 7 ⊱ <@&713245177149521931> (70 000 pts) \n 8 ⊱ <@&713245169423745045> (100 000 pts) \n 9 ⊱ <@&713241995295981609> (150 000) \n 10 ⊱ <@&745010431269011529> (200 000 pts)')
+    .setDescription('`[1] |` <@&711239854591049728> (300 pts) \n `[2] |` <@&712945730494660650> (1 000 pts) \n `[3] |` <@&711506317788971049> (3 000 pts) \n `[4] |` <@&713245195818500097> (10 000 pts) \n `[5] |` <@&713245189795348480> (30 000 pts) \n `[6] |` <@&713245183629590608> (50 000 pts) \n `[7] |` <@&713245177149521931> (70 000 pts) \n `[8] |` <@&713245169423745045> (100 000 pts) \n `[9] |` <@&713241995295981609> (150 000) \n `[10] |` <@&745010431269011529> (200 000 pts)')
     
   client.on('message', message => {
     if (!message.guild) return;
@@ -345,6 +346,19 @@ const role = new discord.MessageEmbed()
     if (message.content === 'aziuizecjnyzetgcziy') {
        message.channel.send(role);
     }
+});
+
+//Talents 
+const talents = new discord.MessageEmbed()
+    .setColor('#FEE0E2')
+    .setAuthor('Les Talents :', 'https://cdn.discordapp.com/attachments/648412438219325461/724619286924230666/a_762309dc83e08f460fd3c269aeaf8f3c.gif' )
+    .addField('Cliquez sur les réactions pour avoir les rôles {talents}, vous aurez la possibilité de les mettre en avant.',':computer: ⊱ Informatique \n :musical_score: ⊱ Musique \n :art: ⊱ Dessin')
+    client.on('message', message => {
+      if (!message.guild) return;
+  
+      if (message.content === 'fzlneiudcbjaibziv') {
+         message.channel.send(talents);
+      }
 });
 
 //Pings 
