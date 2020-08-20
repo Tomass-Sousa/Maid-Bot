@@ -20,45 +20,29 @@ const help = new discord.MessageEmbed()
     .addField("__.si__", "Pour voir les informations du serveur")
     .setImage('https://cdn.discordapp.com/attachments/705499848174206987/716251926710452234/OK6W_koKDTOqqqLDbIoPApKuI1qnjWj8DtVkFCcj45w.gif');
 
-//Status Maid
-    client.on('ready', () => {
-  
-      console.log(`Connecté en tant que ${client.user.tag}!`); })
-    client.on("guildMemberAdd", member => {  //event de join ca met a jour quand qq join 
-      client.user.setStatus("dnd") 
-        setInterval(() => {
-         let membre = 0
-         membre =  member.guild.memberCount ;
-          let activities_list = [
-            `${membre} clients`, 
-            `${membre} clients`, 
-            ]; // liste d'array sous forme de const 
-        
-            const index = Math.floor(Math.random() * (activities_list.length - 1) + 1); //Nombre entre 1 et 3
-            client.user.setActivity(activities_list[index], {
-               type: "WATCHING",
-               url: "https://www.twitch.tv/HikuCoffee"
-             }); // met une des phrases et le type de statut
-        }, 5000); // Intervalle 5 sec(c'est en ms)
-    }); 
-    
-    client.on("guildMemberRemove", member => {  //evenement de leave donc ca met a jour quand y'a un -
-      client.user.setStatus("dnd") 
-        setInterval(() => {
-         let membre = 0
-         membre =  member.guild.memberCount ;
-          let activities_list = [
-            `${membre} clients`, 
-            `${membre} clients`, 
-            ]; // liste d'array sous forme de const 
-        
-            const index = Math.floor(Math.random() * (activities_list.length - 1) + 1); //Nombre entre 1 et 3
-            client.user.setActivity(activities_list[index], {
-               type: "WATCHING",
-               url: "https://www.twitch.tv/HikuCoffee"
-             }); // met une des phrases et le type de statut
-        }, 5000); // Intervalle 5 sec(c'est en ms)
-    });
+//Statut Maid
+client.on('ready',  () => {
+  console.log(`Connecté en tant que ${client.user.tag}!`);
+  client.user.setStatus("dnd") 
+});
+client.on("guildMemberAdd", member => {  //event de join ca met a jour quand qq join 
+     let membre = 0
+     membre =  member.guild.memberCount ;
+    client.user.setActivity(`${membre} personnes`, {
+          type: "WATCHING",
+          url: "https://www.twitch.tv/HikuCoffee"
+         }
+        );
+});
+client.on("guildMemberRemove", member => {  //evenement de leave donc ca met a jour quand y'a un leave
+     let membre = 0
+     membre =  member.guild.memberCount ;
+        client.user.setActivity(`${membre} personnes`, {
+           type: "WATCHING",
+           url: "https://www.twitch.tv/HikuCoffee"
+          }
+        ); 
+});
   
 //bienvenue
 client.on('guildMemberAdd', member => {
@@ -119,7 +103,6 @@ if(message.channel.type==="dm"||message.channel.type==="group") {
         .addField(`${message.member.user.tag} t'as kick pour la raison suivante: ${reason}`, "Fais plus attention !")
     kickMember.send(msgKick).then(() =>
     kickMember.kick()).catch(err => console.log(err))
-
 }
 });
 
@@ -218,24 +201,23 @@ message.channel.bulkDelete(number)
 //vous devrez d'abord supprimer le .setColor('#FEE0E2') puis retirer les //
 
 client.on('message', message => {
-    const user = message.author;
-    let messageArray = message.content.split(" ");
-    let args = messageArray.slice(1,Infinity)
-    let patate = args.join(" ")
- //   const color = "#000000".replace(/0/g, function() { return (~~(Math.random() * 16)).toString(16); });
-    const say = new discord.MessageEmbed() 
- //  .setColor(color)
-    .setColor('#FEE0E2')
-    .setFooter(`${user.tag}`)
-    .setDescription(patate)
-    
-      if(message.content.startsWith(".say")){
-      if(patate == '') return;
-           message.delete()
-         message.channel.send(say)
-      }
-  
-  })
+  const user = message.author;
+  let messageArray = message.content.split(" ");
+  let args = messageArray.slice(1,Infinity)
+  let patate = args.join(" ")
+  const say = new discord.MessageEmbed() 
+  .setColor('#FEE0E2')
+  .setFooter(`${user.tag}`)
+  .setDescription(patate)
+if(message.content.startsWith(".say")){
+   if(message.channel.type ==="dm"||message.channel.type==="group")
+    {return ;}
+    if(patate == '') return;
+    if(patate.length >= 1900) return message.delete() && message.channel.send("Vu la taille de ton message tu dois être ennuyant :/")
+         message.delete()
+  	 message.channel.send(say)
+	}
+})
 
 //BanId (.bi)
 client.on('message', message => {
@@ -280,8 +262,8 @@ client.on('message', message => {
     if(error.code !== 1844 ) return message.delete() && message.channel.send('**ID INVALIDE**')}
     ).then(error => { if(!error) message.channel.send(banheu)})
     
-  }} 
-  })
+}} 
+})
 
 //ServerInfo (.si)
   client.on('message', message => {
@@ -318,7 +300,7 @@ client.on('message', message => {
     
     message.channel.send(serverinf)
   }
-  })
+})
 
 //Bannumber (.totalban)
 client.on('message', message => {
@@ -330,7 +312,122 @@ client.on('message', message => {
      
     })
     .catch(console.error);
-  }})  
+}})  
+
+const fs = require('ffmpeg-static');
+const client = new discord.Client();
+const ytdl = require('ytdl-core')
+const prefix = "."
+const queue = new Map();
+
+client.on("message", async message => {
+  if (message.author.bot) return;
+  if(message.channel.type ==="dm"||message.channel.type==="group")
+  {return;}
+  const serverQueue = queue.get(message.guild.id);
+let args = message.content.substring(prefix.length).split(" ")
+
+switch (args[0]){
+  case 'play':
+    if(!args[1]) return message.channel.send("Aucune musique définie");
+
+    execute(message, serverQueue);
+    break;
+  case 'skip':
+    skip(message, serverQueue);
+    break;
+  case 'stop':
+    stop(message, serverQueue);
+    break;
+}});
+
+async function execute(message, serverQueue) {
+  const args = message.content.split(" ");
+
+  const voiceChannel = message.member.voice.channel;
+  if (!voiceChannel)
+    return message.channel.send(
+      "Vous devez être dans un channel vocal pour lancer une musique."
+    );
+  const permissions = voiceChannel.permissionsFor(message.client.user);
+  if (!permissions.has("CONNECT") || !permissions.has("SPEAK")) {
+    return message.channel.send(
+      "Je n'ai pas les permissions nécessaires pour rejoindre votre channel."
+    );
+  }
+  const validate = await ytdl.validateURL(args[1])
+  if(!validate) return message.channel.send('Vous devez mettre une url valide.')
+  let songInfo = await ytdl.getInfo(args[1]);
+  
+  const song = {
+    title: songInfo.videoDetails.title,
+    url: songInfo.videoDetails.video_url
+  };
+  if (!serverQueue) {
+    const queueContruct = {
+      textChannel: message.channel,
+      voiceChannel: voiceChannel,
+      connection: null,
+      songs: [],
+      volume: 3,
+      playing: true
+    };
+
+    queue.set(message.guild.id, queueContruct);
+
+    queueContruct.songs.push(song);
+
+    try {
+      var connection = await voiceChannel.join();
+      queueContruct.connection = connection;
+      play(message.guild, queueContruct.songs[0]);
+    } catch (err) {
+      queue.delete(message.guild.id);
+      return message.channel.send('Erreur');
+    }
+  } else {
+    serverQueue.songs.push(song);
+    return message.channel.send("`" + song.title +"` a été ajouté à la file.");
+  }
+}
+
+function skip(message, serverQueue) {
+  if (!message.member.voice.channel)
+    return message.channel.send(
+      "Tu dois être en vocal pour __skip__ une musique."
+    );
+  if (!serverQueue)
+    return message.channel.send("Aucune musique présente dans la file.");
+  serverQueue.connection.dispatcher.end();
+}
+
+function stop(message, serverQueue) {
+  if (!message.member.voice.channel)
+    return message.channel.send(
+      "Tu dois être en vocal pour pouvoir __stop__ une musique"
+    );
+  serverQueue.songs = [];
+  serverQueue.connection.dispatcher.end();
+}
+
+function play(guild, song) {
+  const serverQueue = queue.get(guild.id);
+  if (!song) {
+    serverQueue.voiceChannel.leave();
+    queue.delete(guild.id);
+    return;
+  }
+
+  const dispatcher = serverQueue.connection
+    .play(ytdl(song.url))
+    .on("finish", () => {
+      serverQueue.songs.shift();
+      play(guild, serverQueue.songs[0]);
+    })
+    .on("error", error => console.error(error));
+  dispatcher.setVolumeLogarithmic(serverQueue.volume / 5);
+  serverQueue.textChannel.send(" `"+ song.title + "` est actuellement joué");
+}
 
 //login
 client.login(DISCORD_TOKEN);  
