@@ -316,7 +316,6 @@ client.on('message', message => {
 
 const fs = require('ffmpeg-static');
 const ytdl = require('ytdl-core')
-const prefix = "."
 const queue = new Map();
 
 client.on("message", async message => {
