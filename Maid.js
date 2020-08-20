@@ -314,6 +314,120 @@ client.on('message', message => {
     .catch(console.error);
 }})  
 
+const fs = require('ffmpeg-static');
+const ytdl = require('ytdl-core')
+const prefix = "."
+const queue = new Map();
+
+client.on("message", async message => {
+  if (message.author.bot) return;
+  if(message.channel.type ==="dm"||message.channel.type==="group")
+  {return;}
+  const serverQueue = queue.get(message.guild.id);
+let args = message.content.substring(prefix.length).split(" ")
+
+switch (args[0]){
+  case 'play':
+    if(!args[1]) return message.channel.send("Aucune musique définie");
+
+    execute(message, serverQueue);
+    break;
+  case 'skip':
+    skip(message, serverQueue);
+    break;
+  case 'stop':
+    stop(message, serverQueue);
+    break;
+}});
+
+async function execute(message, serverQueue) {
+  const args = message.content.split(" ");
+
+  const voiceChannel = message.member.voice.channel;
+  if (!voiceChannel)
+    return message.channel.send(
+      "Vous devez être dans un channel vocal pour lancer une musique."
+    );
+  const permissions = voiceChannel.permissionsFor(message.client.user);
+  if (!permissions.has("CONNECT") || !permissions.has("SPEAK")) {
+    return message.channel.send(
+      "Je n'ai pas les permissions nécessaires pour rejoindre votre channel."
+    );
+  }
+  const validate = await ytdl.validateURL(args[1])
+  if(!validate) return message.channel.send('Vous devez mettre une url valide.')
+  let songInfo = await ytdl.getInfo(args[1]);
+  
+  const song = {
+    title: songInfo.videoDetails.title,
+    url: songInfo.videoDetails.video_url
+  };
+  if (!serverQueue) {
+    const queueContruct = {
+      textChannel: message.channel,
+      voiceChannel: voiceChannel,
+      connection: null,
+      songs: [],
+      volume: 3,
+      playing: true
+    };
+
+    queue.set(message.guild.id, queueContruct);
+
+    queueContruct.songs.push(song);
+
+    try {
+      var connection = await voiceChannel.join();
+      queueContruct.connection = connection;
+      play(message.guild, queueContruct.songs[0]);
+    } catch (err) {
+      queue.delete(message.guild.id);
+      return message.channel.send('Erreur');
+    }
+  } else {
+    serverQueue.songs.push(song);
+    return message.channel.send("`" + song.title +"` a été ajouté à la file.");
+  }
+}
+
+function skip(message, serverQueue) {
+  if (!message.member.voice.channel)
+    return message.channel.send(
+      "Tu dois être en vocal pour __skip__ une musique."
+    );
+  if (!serverQueue)
+    return message.channel.send("Aucune musique présente dans la file.");
+  serverQueue.connection.dispatcher.end();
+}
+
+function stop(message, serverQueue) {
+  if (!message.member.voice.channel)
+    return message.channel.send(
+      "Tu dois être en vocal pour pouvoir __stop__ une musique"
+    );
+  serverQueue.songs = [];
+  serverQueue.connection.dispatcher.end();
+}
+
+function play(guild, song) {
+  const serverQueue = queue.get(guild.id);
+  if (!song) {
+    serverQueue.voiceChannel.leave();
+    queue.delete(guild.id);
+    return;
+  }
+
+  const dispatcher = serverQueue.connection
+    .play(ytdl(song.url))
+    .on("finish", () => {
+      serverQueue.songs.shift();
+      play(guild, serverQueue.songs[0]);
+    })
+    .on("error", error => console.error(error));
+  dispatcher.setVolumeLogarithmic(serverQueue.volume / 5);
+  serverQueue.textChannel.send(" `"+ song.title + "` est actuellement joué");
+}
+
 //login
 client.login(DISCORD_TOKEN);  
 
