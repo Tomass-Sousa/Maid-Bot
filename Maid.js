@@ -5,6 +5,11 @@ const discord = require('discord.js');
 const client = new discord.Client();
 const { prefix, DISCORD_TOKEN} = require('./config.json')
 
+//Musique 
+const fs = require('ffmpeg-static');
+const ytdl = require('ytdl-core')
+const queue = new Map();
+
 //Le Point Help (.help)
 const help = new discord.MessageEmbed()
     .setColor('#ffdfdf')
@@ -314,10 +319,7 @@ client.on('message', message => {
     .catch(console.error);
 }})  
 
-const fs = require('ffmpeg-static');
-const ytdl = require('ytdl-core')
-const queue = new Map();
-
+//Musique 
 client.on("message", async message => {
   if (message.author.bot) return;
   if(message.channel.type ==="dm"||message.channel.type==="group")
@@ -402,7 +404,7 @@ function skip(message, serverQueue) {
 function stop(message, serverQueue) {
   if (!message.member.voice.channel)
     return message.channel.send(
-      "Tu dois être en vocal pour pouvoir __stop__ une musique"
+      "Tu dois être en vocal pour pouvoir __stop__ une musique."
     );
   serverQueue.songs = [];
   serverQueue.connection.dispatcher.end();
