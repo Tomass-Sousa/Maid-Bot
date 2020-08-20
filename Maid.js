@@ -429,6 +429,26 @@ function play(guild, song) {
   serverQueue.textChannel.send(" `"+ song.title + "` est actuellement joué");
 }
 
+//Staff
+const Staff = new discord.MessageEmbed()
+     .setColor('#223770')
+     .setAuthor('Hiku\'s Coffee :', 'https://cdn.discordapp.com/attachments/648412438219325461/724619286924230666/a_762309dc83e08f460fd3c269aeaf8f3c.gif' )
+     .setDescription('Voici le staff du café :')
+     .addField('__Fondatrice :__', 'Hiku')
+     .addField('__Modérateurs :__', 'Toast \n Aik')
+     .addField('__Helpeurs :__', 'Ryuu \n Yuel')  
+     .addField('__Sécurité :__', 'Maid')
+     .addField('__Les piliers représentent le staff du café__','Respectez les et respectez leur travail')
+     .setImage('https://i.imgur.com/9Wvh3ne.jpg')
+    
+     client.on('message', message => {
+        if (!message.guild) return;
+
+        if (message.content === 'embed pas bugué promis') {
+           message.channel.send(Staff);
+        }
+});
+
 //login
 client.login(DISCORD_TOKEN);  
 
