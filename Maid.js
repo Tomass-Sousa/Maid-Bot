@@ -327,19 +327,17 @@ client.on("message", async message => {
   const serverQueue = queue.get(message.guild.id);
 let args = message.content.substring(prefix.length).split(" ")
 
-switch (args[0]){
-  case 'play':
-    if(!args[1]) return message.channel.send("Aucune musique définie");
-
-    execute(message, serverQueue);
-    break;
-  case 'skip':
-    skip(message, serverQueue);
-    break;
-  case 'stop':
-    stop(message, serverQueue);
-    break;
-}});
+if (message.content.startsWith(`${prefix}play`)) {
+  execute(message, serverQueue);
+  return;
+} else if (message.content.startsWith(`${prefix}skip`)) {
+  skip(message, serverQueue);
+  return;
+} else if (message.content.startsWith(`${prefix}stop`)) {
+  stop(message, serverQueue);
+  return;
+}
+});
 
 async function execute(message, serverQueue) {
   const args = message.content.split(" ");
