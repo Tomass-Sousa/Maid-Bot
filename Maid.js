@@ -511,7 +511,7 @@ const equipes  = new discord.MessageEmbed()
 const Staff = new discord.MessageEmbed()
     .setColor('#fafafa')
     .setAuthor('Hiku\'s Coffee :', 'https://cdn.discordapp.com/attachments/648412438219325461/724619286924230666/a_762309dc83e08f460fd3c269aeaf8f3c.gif' )
-    .setDescription('__**Les piliers sont les gérants du café :**__\n‏‏‎ ‎\n__**Les Administrateurs :**__\n・Toast\n・Hiku\n・Aik\n‏‏‎ ‎\n__**Les Helpeurs :**__\n・Sashi\n・Yuel\n・Rain\n‏‏‎ ‎\n__**Notre Bot :**__\nMaid a été développée par aik et toast, elle propose beaucoup de contenu a l\'heure actuelle et n\'as pas fini d\'évoluer, elle propose beaucoup de commandes mais elle gére aussi l\'intégralité du serveur, n\'hésitez pas a utiliser le `.help` pour avoir la liste des commandes disponibles au clients.')
+    .setDescription('__**Les piliers sont les gérants du café :**__\n‏‏‎ ‎\n__**Les Administrateurs :**__\n・Toast\n・Hiku\n・Aik\n‏‏‎ ‎\n__**Les Helpeurs :**__\n・Sashi\n・Yuel\n・Rain\n‏‏‎ ‎\n__**Notre Bot :**__\nMaid a été développée par aik et toast, elle propose beaucoup de contenu a l\'heure actuelle et n\'as pas fini d\'évoluer, elle propose beaucoup de commandes mais elle gére aussi l\'intégralité du serveur, n\'hésitez pas a utiliser le **.help** pour avoir la liste des commandes disponibles au clients.')
     .setImage('https://i.imgur.com/uxKDKKY.jpg')
 client.on('message', message => {
    if (!message.guild) return;
