@@ -456,6 +456,7 @@ const role = new discord.MessageEmbed()
     .setColor('#ffdbc7')
     .setAuthor('Les Grades :', 'https://cdn.discordapp.com/attachments/648412438219325461/724619286924230666/a_762309dc83e08f460fd3c269aeaf8f3c.gif' )
     .setDescription('`[0] |` <@&711239854591049728> (300 pts)\n`[1] |` <@&712945730494660650> (1 000 pts)\n`[2] |` <@&711506317788971049> (3 000 pts)\n`[3] |` <@&713245195818500097> (10 000 pts)\n`[4] |` <@&713245189795348480> (30 000 pts)\n`[5] |` <@&713245183629590608> (50 000 pts)\n`[6] |` <@&713245177149521931> (70 000 pts)\n`[7] |` <@&713245169423745045> (100 000 pts)\n`[8] |` <@&713241995295981609> (150 000 pts)\n`[9] |` <@&745010431269011529> (200 000 pts)')
+    .addFooter('Sélectionnez un rôle en\nutilisant des réactions.')
     
     client.on('message', message => {
     if (!message.guild) return;
@@ -470,6 +471,7 @@ const talents = new discord.MessageEmbed()
     .setColor('#ffdbc7')
     .setAuthor('Les Talents :', 'https://cdn.discordapp.com/attachments/648412438219325461/724619286924230666/a_762309dc83e08f460fd3c269aeaf8f3c.gif' )
     .setDescription('1 - <@&745212160422182952>\n2 - <@&745212163001417728>\n3 - <@&745212158207590420>')
+    .addFooter('Sélectionnez un rôle en\nutilisant des réactions.')
 
     client.on('message', message => {
       if (!message.guild) return;
@@ -484,6 +486,7 @@ const pings = new discord.MessageEmbed()
     .setColor('#FEE0E2')
     .setAuthor('Les Pings :', 'https://cdn.discordapp.com/attachments/648412438219325461/724619286924230666/a_762309dc83e08f460fd3c269aeaf8f3c.gif' )
     .setDescription('1 - <@&713792550418251827>\n2 - <@&716554210077966338>\n3 - <@&716554222602158111>')
+    .addFooter('Sélectionnez un rôle en\nutilisant des réactions.')
 
     client.on('message', message => {
     if (!message.guild) return;
@@ -498,7 +501,8 @@ const equipes  = new discord.MessageEmbed()
     .setColor('#FEE0E2')
     .setAuthor('Les Equipes :', 'https://cdn.discordapp.com/attachments/648412438219325461/724619286924230666/a_762309dc83e08f460fd3c269aeaf8f3c.gif' )
     .setDescription('1 - <@&716575123079168081\n2 - <@&716575070138400779>')
-    
+    .addFooter('Sélectionnez un rôle en\nutilisant des réactions.')
+
     client.on('message', message => {
     if (!message.guild) return;
     
@@ -513,6 +517,7 @@ const Staff = new discord.MessageEmbed()
     .setAuthor('Hiku\'s Coffee :', 'https://cdn.discordapp.com/attachments/648412438219325461/724619286924230666/a_762309dc83e08f460fd3c269aeaf8f3c.gif' )
     .setDescription('__**Les piliers sont les gérants du café :**__\n‏‏‎ ‎\n__**Les Administrateurs :**__\n・Toast\n・Hiku\n・Aik\n‏‏‎ ‎\n__**Les Helpeurs :**__\n・Sashi\n・Yuel\n・Rain\n‏‏‎ ‎\n__**Notre Bot :**__\nMaid a été développée par aik et toast, elle propose beaucoup de contenu a l\'heure actuelle et n\'as pas fini d\'évoluer, elle propose beaucoup de commandes mais elle gére aussi l\'intégralité du serveur, n\'hésitez pas a utiliser le **.help** pour avoir la liste des commandes disponibles au clients.')
     .setImage('https://i.imgur.com/uxKDKKY.jpg')
+
 client.on('message', message => {
    if (!message.guild) return;
 
