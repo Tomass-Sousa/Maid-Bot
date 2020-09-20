@@ -499,7 +499,7 @@ const pings = new discord.MessageEmbed()
 const equipes  = new discord.MessageEmbed()
     .setColor('#FEE0E2')
     .setAuthor('Les Equipes :', 'https://cdn.discordapp.com/attachments/648412438219325461/724619286924230666/a_762309dc83e08f460fd3c269aeaf8f3c.gif' )
-    .setDescription('1 - <@&716575123079168081\n2 - <@&716575070138400779>')
+    .setDescription('1 - <@&716575123079168081>\n2 - <@&716575070138400779>')
     .setFooter('Cliquez pour avoir un rôle.')
 
     client.on('message', message => {
