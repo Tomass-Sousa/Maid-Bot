@@ -427,21 +427,6 @@ function play(guild, song) {
   serverQueue.textChannel.send(" `"+ song.title + "` est actuellement joué");
 }
 
-//Staff
-const Staff = new discord.MessageEmbed()
-    .setColor('#fafafa')
-    .setAuthor('Hiku\'s Coffee :', 'https://cdn.discordapp.com/attachments/648412438219325461/724619286924230666/a_762309dc83e08f460fd3c269aeaf8f3c.gif' )
-    .setDescription('__**Les piliers sont les gérants du café :**__\n‏‏‎ ‎\n__**Les Administrateurs :**__\n‏‏‎ ‎\n・Toast\n・Hiku\n・Aik\n‏‏‎ ‎\n__**Les Helpeurs :**__\n‏‏‎ ‎\n・Sashi\n・Yuel\n・Rain\n‏‏‎ ‎\n__**Notre Bot :**__\n‏‏‎ ‎\nMaid a été développée par Aik et Toast, elle propose beaucoup de contenu à l\'heure actuelle et n\'a pas fini d\'évoluer, elle possède aussi des commandes diverses et variées, mais elle gére aussi l\'intégralité du serveur, n\'hésitez pas a utiliser le **.help** pour avoir la liste des commandes disponibles aux clients.')
-    .setImage('https://i.imgur.com/uxKDKKY.jpg')
-
-client.on('message', message => {
-   if (!message.guild) return;
-
-   if (message.content === 'embedstaff') {
-      message.channel.send(Staff);
-   }
-});
-
 //login
 client.login(DISCORD_TOKEN);  
 
