@@ -435,9 +435,9 @@ function play(guild, song) {
 
 //Boosters
 const Boosters = new discord.MessageEmbed()
-    .setColor('#ffffff')
+    .setColor('#fafafa')
     .setAuthor('Les boosters :', 'https://cdn.discordapp.com/attachments/648412438219325461/724619286924230666/a_762309dc83e08f460fd3c269aeaf8f3c.gif' )
-    .setDescription('Les <@&658315587314778125> sont les clients qui soutiennent le serveur, grâce a eux nous pouvons vous donner plus de contenu\n Voici la liste de vos avantages si vous boostez le serveur, l\'abus est évidement interdi :\n‏‏‎ ‎\n・ Un rôle personnalisé avec sa couleur et son nom au choix, suffit de ping un modo.\n‏‏‎ ‎\n・ Une priorité pour les events, annonces ou giveaways, avec une place réservé.\n‏‏‎ ‎\n・ La possibilité de demander une aide publicitaire, sauf pour des serveurs.\n‏‏‎ ‎\n・ Une place tout en haut de nos clients mais aussi de nos haut gradés.\n‏‏‎ ‎\n・ La possibilité de proposer de nouvelles emotes animés ou statiques.\n‏‏‎ ‎\n・ Un avantage auprès de notre bot, sur les mise a jour a venir.\n‏‏‎ ‎\n・ Des commandes utilitaires comme pour la musique ou autre.\n‏‏‎ ‎\n・ Un Contact plus rapide et plus facile avec notre staff.\n‏‏‎ ‎\n・ Envoyer des liens et des images sur tout les channels.')
+    .setDescription('Les <@&658315587314778125> sont les clients qui soutiennent le serveur, grâce a eux nous pouvons vous donner plus de contenu\n Voici la liste de vos avantages si vous boostez le serveur, **l\'abus est interdi** :\n‏‏‎ ‎\n・ Un rôle personnalisé avec sa couleur et son nom au choix, suffit de ping un modo.\n‏‏‎ ‎\n・ Une priorité pour les events, annonces ou giveaways, avec une place réservé.\n‏‏‎ ‎\n・ La possibilité de demander une aide publicitaire, sauf pour des serveurs.\n‏‏‎ ‎\n・ Une place tout en haut de nos clients mais aussi de nos haut gradés.\n‏‏‎ ‎\n・ La possibilité de proposer de nouvelles emotes animés ou statiques.\n‏‏‎ ‎\n・ Un avantage auprès de notre bot, sur les mise a jour a venir.\n‏‏‎ ‎\n・ Des commandes utilitaires comme pour la musique ou autre.\n‏‏‎ ‎\n・ Un Contact plus rapide et plus facile avec notre staff.\n‏‏‎ ‎\n・ Envoyer des liens et des images sur tout les channels.')
 
     client.on('message', message => {
     if (!message.guild) return;
