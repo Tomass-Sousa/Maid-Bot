@@ -469,7 +469,7 @@ const role = new discord.MessageEmbed()
 const talents = new discord.MessageEmbed()
     .setColor('#ffdbc7')
     .setAuthor('Les Talents :', 'https://cdn.discordapp.com/attachments/648412438219325461/724619286924230666/a_762309dc83e08f460fd3c269aeaf8f3c.gif' )
-    .setDescription('1 — <@&745212160422182952>\n2 — <@&745212163001417728>\n3 — <@&745212158207590420>')
+    .setDescription('1 - <@&745212160422182952>\n2 - <@&745212163001417728>\n3 - <@&745212158207590420>')
 
     client.on('message', message => {
       if (!message.guild) return;
@@ -483,7 +483,7 @@ const talents = new discord.MessageEmbed()
 const pings = new discord.MessageEmbed()
     .setColor('#FEE0E2')
     .setAuthor('Les Pings :', 'https://cdn.discordapp.com/attachments/648412438219325461/724619286924230666/a_762309dc83e08f460fd3c269aeaf8f3c.gif' )
-    .setDescription('1 — <@&713792550418251827>\n2 — <@&716554210077966338>\n3 — <@&716554222602158111>')
+    .setDescription('1 - <@&713792550418251827>\n2 - <@&716554210077966338>\n3 - <@&716554222602158111>')
 
     client.on('message', message => {
     if (!message.guild) return;
@@ -497,7 +497,7 @@ const pings = new discord.MessageEmbed()
 const equipes  = new discord.MessageEmbed()
     .setColor('#FEE0E2')
     .setAuthor('Les Equipes :', 'https://cdn.discordapp.com/attachments/648412438219325461/724619286924230666/a_762309dc83e08f460fd3c269aeaf8f3c.gif' )
-    .setDescription('1 — <@&716575123079168081\n2 — <@&716575070138400779>')
+    .setDescription('1 - <@&716575123079168081\n2 - <@&716575070138400779>')
     
     client.on('message', message => {
     if (!message.guild) return;
