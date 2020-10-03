@@ -59,7 +59,7 @@ client.on('guildMemberAdd', member => {
      .setColor(`#ffdfdf`)
      .setThumbnail(url)
      .setAuthor('Hiku\'s Coffee','https://cdn.discordapp.com/attachments/648412438219325461/724619286924230666/a_762309dc83e08f460fd3c269aeaf8f3c.gif' )
-     .addField('Un client est arrivé :',`Salut, ${member.user.username}\nTu es notre ${member.guild.memberCount}ème client.`)
+     .addField('Un client est arrivé :',`Salutations, ${member.user.username}\nTu es notre ${member.guild.memberCount}ème client.`)
      .addField("Avant tout : ", "▹〢 Lire le <#711111570163499018> \n▹〢 Prendre ses <#716566179967139963> \n▹〢 Et regarder le <#715954917327765504>")
      .setImage('https://i.imgur.com/qm4Rg7M.gif')
 
