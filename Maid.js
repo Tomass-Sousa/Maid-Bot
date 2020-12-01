@@ -451,7 +451,7 @@ client.on('messageReactionAdd', async (reaction, user) => {
               .setFooter(reaction.message.id)
               .setTimestamp();
           if(maidboard)
-              maidboard.send('1 - 🌸', embed);
+              maidboard.send('🌸 1 | ', embed);
       }
   }
   if(reaction.emoji.name === '⭐') {
