@@ -434,7 +434,7 @@ client.on('messageReactionAdd', async (reaction, user) => {
       const existingMsg = msgs.find(msg => 
           msg.embeds.length === 1 ?
           (msg.embeds[0].footer.text.startsWith(reaction.message.id) ? true : false) : false);
-      if(existingMsg) existingMsg.edit(`${reaction.count} - 🌸`);
+      if(existingMsg) existingMsg.edit(`🌸 ${reaction.count} |`);
       else {
           const image = reaction.message.attachments.size > 0 ? (reaction, reaction.message.attachments.array()[0].url) : '';
           const embed = new discord.MessageEmbed()
@@ -451,7 +451,7 @@ client.on('messageReactionAdd', async (reaction, user) => {
               .setFooter(reaction.message.id)
               .setTimestamp();
           if(maidboard)
-              maidboard.send('🌸 1 | ', embed);
+              maidboard.send('🌸 1 | '+ "<@" + reaction.message.channel.id + ">", embed);
       }
   }
   if(reaction.emoji.name === '⭐') {
