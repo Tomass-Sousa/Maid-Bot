@@ -441,7 +441,7 @@ client.on('messageReactionAdd', async (reaction, user) => {
               .setAuthor(reaction.message.author.tag, reaction.message.author.displayAvatarURL())
               .setColor(`#ffdfdf`)
               .addFields({
-                  name: '~',
+                  name: ' ‎',
                   value:
                    `**[Cliquez ici pour voir le message](https://discordapp.com/channels/${reaction.message.guild.id}/${reaction.message.channel.id}/${reaction.message.id})**`
               })
