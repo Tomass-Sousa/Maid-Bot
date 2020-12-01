@@ -429,7 +429,7 @@ function play(guild, song) {
 //Starboard 
 client.on('messageReactionAdd', async (reaction, user) => {
   const handleStarboard = async () => {
-      const maidboard = client.channels.cache.find(channel => channel.name.toLowerCase() === '〢:white_flower:starboard');
+      const maidboard = client.channels.cache.find(channel => channel.name.toLowerCase() === '〢💮starboard');
       const msgs = await  maidboard.messages.fetch({ limit: 100 });
       const existingMsg = msgs.find(msg => 
           msg.embeds.length === 1 ?
@@ -455,7 +455,7 @@ client.on('messageReactionAdd', async (reaction, user) => {
       }
   }
   if(reaction.emoji.name === '⭐') {
-      if(reaction.message.channel.name.toLowerCase() === '〢:white_flower:starboard') return;
+      if(reaction.message.channel.name.toLowerCase() === '〢💮starboard') return;
       if(reaction.message.partial) {
           await reaction.fetch();
           await reaction.message.fetch();
@@ -468,7 +468,7 @@ client.on('messageReactionAdd', async (reaction, user) => {
 
 client.on('messageReactionRemove', async (reaction, user) => {
   const handleStarboard = async () => {
-      const maidboard = client.channels.cache.find(channel => channel.name.toLowerCase() === '〢:white_flower:starboard');
+      const maidboard = client.channels.cache.find(channel => channel.name.toLowerCase() === '〢💮starboard');
       const msgs = await  maidboard.messages.fetch({ limit: 100 });
       const existingMsg = msgs.find(msg => 
           msg.embeds.length === 1 ? 
@@ -481,7 +481,7 @@ client.on('messageReactionRemove', async (reaction, user) => {
       };
   }
   if(reaction.emoji.name === '⭐') {
-      if(reaction.message.channel.name.toLowerCase() === '〢:white_flower:starboard') return;
+      if(reaction.message.channel.name.toLowerCase() === '〢💮starboard') return;
       if(reaction.message.partial) {
           await reaction.fetch();
           await reaction.message.fetch();
