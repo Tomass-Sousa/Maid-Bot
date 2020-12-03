@@ -434,14 +434,14 @@ client.on('messageReactionAdd', async (reaction, user) => {
       const existingMsg = msgs.find(msg => 
           msg.embeds.length === 1 ?
           (msg.embeds[0].footer.text.startsWith(reaction.message.id) ? true : false) : false);
-      if(existingMsg) existingMsg.edit(`🌸 ${reaction.count} |`);
+      if(existingMsg) existingMsg.edit(`🌸 ${reaction.count} |`+ "<#" + reaction.message.channel.id + ">");
       else {
           const image = reaction.message.attachments.size > 0 ? (reaction, reaction.message.attachments.array()[0].url) : '';
           const embed = new discord.MessageEmbed()
               .setAuthor(reaction.message.author.tag, reaction.message.author.displayAvatarURL())
               .setColor(`#ffdfdf`)
               .addFields({
-                  name: ' ‎',
+                  name: '‎ ‎',
                   value:
                    `**[Cliquez ici pour voir le message](https://discordapp.com/channels/${reaction.message.guild.id}/${reaction.message.channel.id}/${reaction.message.id})**`
               })
@@ -451,7 +451,7 @@ client.on('messageReactionAdd', async (reaction, user) => {
               .setFooter(reaction.message.id)
               .setTimestamp();
           if(maidboard)
-              maidboard.send('🌸 1 | '+ "<@!" + reaction.message.channel.id + ">", embed);
+              maidboard.send('🌸 1 |'+ "<#" + reaction.message.channel.id + ">", embed);
       }
   }
   if(reaction.emoji.name === '⭐') {
@@ -477,7 +477,7 @@ client.on('messageReactionRemove', async (reaction, user) => {
           if(reaction.count === 0)
               existingMsg.delete({ timeout: 2500 });
           else
-              existingMsg.edit(`${reaction.count} - ⭐`)
+              existingMsg.edit(`🌸 ${reaction.count} |`+ "<#" + reaction.message.channel.id + ">")
       };
   }
   if(reaction.emoji.name === '⭐') {
