@@ -132,14 +132,14 @@ client.on('message', message => {
   const ban = new discord.MessageEmbed()
       .setTitle("Maid a bien expulsé le client du café.")
       .setColor(`#ffdfdf`)
-      .setImage('https://imgur.com/muxqYsx')
+      .setImage('https://i.imgur.com/muxqYsx.gif')
       .setDescription(`L'utilisateur a été banni`)
       .addField(`${message.member.user.username} t'as banni pour la raison suivante: ${reason}`, "Si le ban n'est pas justifié, merci de contacter un pilier.")
   message.channel.send(ban)
  
   const msgBan = new discord.MessageEmbed()
       .setTitle(`Tu as été banni du serveur Hiku's Coffee.`)
-      .setImage('https://imgur.com/muxqYsx')
+      .setImage('https://i.imgur.com/muxqYsx.gif')
       .setColor(`#ffdfdf`)
       .addField(`${message.member.user.username} t'as banni pour la raison suivante: ${reason}`, "Bonne continuation")
   banMember.send(msgBan).then(() =>
