@@ -112,36 +112,38 @@ if(message.channel.type==="dm"||message.channel.type==="group") {
 
 //ban (.ban)
 client.on('message', message => {
-    let messageArray = message.content.split(" ");
-    let args = messageArray.slice(1);
-    let member = messageArray.slice(2);
+  let messageArray = message.content.split(" ");
+  let args = messageArray.slice(1);
+  let member = messageArray.slice(2);
 
-    if(message.content.startsWith(".ban")){
-        if(message.channel.type==="dm"||message.channel.type==="group") {
-			return message.reply('Tu te sens si seul ? Pauvre de toi. . ');
-		}
-    if(!message.member.hasPermission(["BAN_MEMBERS"], ["ADMINISTRATOR"])) return message.channel.send("Tu n'as pas la permission de faire cette commande.")
+  if(message.content.startsWith(".ban")){
+      if(message.channel.type==="dm"||message.channel.type==="group") {
+          return message.reply('Tu te sens si seul ? Pauvre de toi. . ');
+      }
+  if(!message.member.hasPermission(["BAN_MEMBERS"], ["ADMINISTRATOR"])) return message.channel.send("Tu n'as pas la permission de faire cette commande.")
 
-    let banMember = message.mentions.members.first() //|| message.guild.members.get(args[0])
-    if(!banMember) return message.channel.send("Tu n'as donné aucun utilisateur à bannir...");
-    let reason = args.slice(1).join(" ")
-    if(!reason) reason = "Aucune raison donnée."
+  let banMember = message.mentions.members.first() //|| message.guild.members.get(args[0])
+  if(!banMember) return message.channel.send("Tu n'as donné aucun utilisateur à bannir...");
+  let reason = args.slice(1).join(" ")
+  if(!reason) reason = "Aucune raison donnée."
 
-    if(!message.guild.me.hasPermission(["BAN_MEMBERS"], ["ADMINISTRATOR"])) return message.channel.send("Je n'ai pas la permission de faire ça.")
-    
-    const ban = new discord.MessageEmbed()
-        .setTitle("Maid a bien expulsé le client du café.")
-        .setColor(`#ffdfdf`)
-        .setDescription(`L'utilisateur a été banni`)
-        .addField(`${message.member.user.username} t'as banni pour la raison suivante: ${reason}`, "Si le ban n'est pas justifié, merci de contacter un pilier.")
-    message.channel.send(ban)
-   
-    const msgBan = new discord.MessageEmbed()
-        .setTitle(`Tu as été banni du serveur Hiku's Coffee.`)
-        .setColor(`#ffdfdf`)
-        .addField(`${message.member.user.username} t'as banni pour la raison suivante: ${reason}`, "Bonne continuation")
-    banMember.send(msgBan).then(() =>
-    banMember.ban()).catch(err => console.log(err))
+  if(!message.guild.me.hasPermission(["BAN_MEMBERS"], ["ADMINISTRATOR"])) return message.channel.send("Je n'ai pas la permission de faire ça.")
+  
+  const ban = new discord.MessageEmbed()
+      .setTitle("Maid a bien expulsé le client du café.")
+      .setColor(`#ffdfdf`)
+      .setImage('https://imgur.com/muxqYsx')
+      .setDescription(`L'utilisateur a été banni`)
+      .addField(`${message.member.user.username} t'as banni pour la raison suivante: ${reason}`, "Si le ban n'est pas justifié, merci de contacter un pilier.")
+  message.channel.send(ban)
+ 
+  const msgBan = new discord.MessageEmbed()
+      .setTitle(`Tu as été banni du serveur Hiku's Coffee.`)
+      .setImage('https://imgur.com/muxqYsx')
+      .setColor(`#ffdfdf`)
+      .addField(`${message.member.user.username} t'as banni pour la raison suivante: ${reason}`, "Bonne continuation")
+  banMember.send(msgBan).then(() =>
+  banMember.ban()).catch(err => console.log(err))
 }
 });
 
