@@ -188,6 +188,17 @@ client.on('message', message => {
     }
 });
 
+//Bonk (.bonk)
+pate = message.mentions.members.first()
+if(!pate) {
+     user = client.user.username };
+if(pate) {
+user = message.mentions.members.first().user.username}
+const embed = new discord.MessageEmbed()
+.setDescription(message.author.username + " Bonk ! " +  user)
+.setImage("https://i.imgur.com/KdChZbo.png")
+message.channel.send(embed)
+
 //Purge (.purge)
 client.on('message', message => {
     if (!message.guild) return;
@@ -252,7 +263,7 @@ client.on('message', message => {
     let reason = args.slice(1).join(" ")
     if(!reason) reason = "Aucune raison donnée."
 
-  //EMBED
+  //Embed
     let banheu = new discord.MessageEmbed()
     .setTitle(`${message.guild.name} `)
     .setDescription("**Utilisateur banni :**")
@@ -492,19 +503,6 @@ client.on('messageReactionRemove', async (reaction, user) => {
           handleStarboard();
   }
 });
-
-//bonk (.bonk)
-let messageArray = message.content.split(" ");
-args = messageArray.slice(1);
-pate = message.mentions.members.first()
-if(!pate) {
-     user = client.user.username };
-if(pate) {
-user = message.mentions.members.first().user.username}
-const embed = new discord.MessageEmbed()
-.setDescription(message.author.username + " Bonk ! " +  user)
-.setImage("https://i.imgur.com/KdChZbo.png")
-message.channel.send(embed)
 
 //login
 client.login(DISCORD_TOKEN);  
