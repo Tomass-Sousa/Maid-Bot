@@ -13,10 +13,9 @@ const queue = new Map();
 //Le Point Help (.help)
 const help = new discord.MessageEmbed()
     .setColor('#84EEFF')
-    .setTitle('Aide')
+    .setTitle('**Aide**')
     .setAuthor('Hiku\'s Coffee :', 'https://cdn.discordapp.com/attachments/648412438219325461/724619286924230666/a_762309dc83e08f460fd3c269aeaf8f3c.gif')
-    .setDescription('__**Retrouve la liste des commandes ici**__')
-    .setThumbnail('https://i.imgur.com/b9lkIaA.png')
+    .setDescription('__**Retrouve la liste des commandes ici :**__')
     .addFields(
       { name: '.ping', value: '**Ping le bot**', inline: true },
       { name: '.help', value: '**Affiche cette page**', inline: true },
@@ -30,7 +29,7 @@ const help = new discord.MessageEmbed()
       { name: '.totalban', value: '**Affiche le nombre de bannissements**', inline: true },
 		  { name: '.bonk', value: '**Bonk votre adversaire**', inline: true },) 
     .setImage('https://i.imgur.com/FIz6vAa.gif')
-    .setFooter(`Certaines commandes ne sont accessibles qu'aux piliers`)
+    .setFooter(`*Certaines commandes ne sont accessibles qu'aux piliers*`)
     .setTimestamp();
 
 //Statut Maid
