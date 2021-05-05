@@ -12,18 +12,26 @@ const queue = new Map();
 
 //Le Point Help (.help)
 const help = new discord.MessageEmbed()
-    .setColor('#ffdfdf')
+    .setColor('#84EEFF')
     .setTitle('Aide')
     .setAuthor('Hiku\'s Coffee :', 'https://cdn.discordapp.com/attachments/648412438219325461/724619286924230666/a_762309dc83e08f460fd3c269aeaf8f3c.gif')
-    .setDescription('Retrouve la liste des commandes ici')
-    .addField("__.ping__ ", "Ping le bot.")
-    .addField("__.help__", "Affiche cette page.")
-    .addField("__.say__", "Affiche votre message en embed.")
-    .addField("__.info__", "Voir les createurs du bot.")
-    .addField("__.avatar__", "Affiche l'avatar du membre.")
-    .addField("__.purge__", "Pour effacer un nombre de messages.")
-    .addField("__.si__", "Pour voir les informations du serveur")
-    .setImage('https://cdn.discordapp.com/attachments/705499848174206987/716251926710452234/OK6W_koKDTOqqqLDbIoPApKuI1qnjWj8DtVkFCcj45w.gif');
+    .setDescription('__**Retrouve la liste des commandes ici**__')
+    .setThumbnail('https://i.imgur.com/b9lkIaA.png')
+    .addFields(
+      { name: '.ping', value: '**Ping le bot**', inline: true },
+      { name: '.help', value: '**Affiche cette page**', inline: true },
+      { name: '\u200B', value: '\u200B' },
+      { name: '.say', value: '**Affiche votre message en embed**', inline: true },
+		  { name: '.avatar', value: "**Affiche l'avatar du membre**", inline: true },
+      { name: '\u200B', value: '\u200B' },
+      { name: '.purge', value: '**Effacer un nombre de messages**', inline: true },
+	  	{ name: '.si', value: '**Voir les informations du serveur**', inline: true },
+      { name: '\u200B', value: '\u200B' },
+      { name: '.totalban', value: '**Affiche le nombre de bannissements**', inline: true },
+		  { name: '.bonk', value: '**Bonk votre adversaire**', inline: true },) 
+    .setImage('https://i.imgur.com/FIz6vAa.gif')
+    .setFooter(`Demandé par ${message.member.user.tag}`)
+    .setTimestamp();
 
 //Statut Maid
 client.on('ready',  () => {
@@ -56,12 +64,12 @@ client.on('guildMemberAdd', member => {
   const url = member.user.avatarURL({ format: 'png', dynamic: true, size: 1024 })
   const welcome = new discord.MessageEmbed()
 
-     .setColor(`#ffdfdf`)
+     .setColor(`#D9EFD7`)
      .setThumbnail(url)
-     .setAuthor('Hiku\'s Coffee','https://cdn.discordapp.com/attachments/648412438219325461/724619286924230666/a_762309dc83e08f460fd3c269aeaf8f3c.gif' )
+     .setAuthor('Hiku\'s Coffee','https://cdn.discordapp.com/attachments/648412438219325461/724619286924230666/a_762309dc83e08f460fd3c269aeaf8f3c.gif')
      .addField('Un client est arrivé :',`Salutations, ${member.user.username}\nTu es notre ${member.guild.memberCount}ème client.`)
-     .addField("Avant tout : ", "▹〢 Lire le <#711111570163499018> \n▹〢 Prendre ses <#716566179967139963> \n▹〢 Et regarder le <#715954917327765504>")
-     .setImage('https://i.imgur.com/XjJR6yj.jpg')
+     .addField("Avant toutes choses :", "┊・Lire le <#711111570163499018> \n┊・Prendre ses <#716566179967139963> \n┊・Et regarder le <#715954917327765504> \n╰────────────────✦ ")
+     .setImage('https://i.imgur.com/xJgmcTV.gif')
 
   channel.send(welcome)
 });
@@ -73,6 +81,19 @@ client.on('guildMemberAdd', member => {
           message.reply('Pong')
      }
 });
+
+//bonk (.bonk)
+let messageArray = message.content.split(" ");
+args = messageArray.slice(1);
+pate = message.mentions.members.first()
+if(!pate) {
+     user = client.user.username };
+if(pate) {
+user = message.mentions.members.first().user.username}
+const embed = new discord.MessageEmbed()
+.setDescription(message.author.username + " Bonk ! " +  user)
+.setImage("https://i.imgur.com/KdChZbo.png")
+message.channel.send(embed)
 
 //kick (.kick)
   client.on('message', message => {
@@ -131,7 +152,7 @@ client.on('message', message => {
   
   const ban = new discord.MessageEmbed()
       .setTitle("Maid a bien expulsé le client du café.")
-      .setColor(`#ffdfdf`)
+      .setColor(`#dc143c`)
       .setImage('https://i.imgur.com/muxqYsx.gif')
       .setDescription(`L'utilisateur a été banni`)
       .addField(`${message.member.user.username} t'as banni pour la raison suivante: ${reason}`, "Si le ban n'est pas justifié, merci de contacter un pilier.")
@@ -140,7 +161,7 @@ client.on('message', message => {
   const msgBan = new discord.MessageEmbed()
       .setTitle(`Tu as été banni du serveur Hiku's Coffee.`)
       .setImage('https://i.imgur.com/muxqYsx.gif')
-      .setColor(`#ffdfdf`)
+      .setColor(`#dc143c`)
       .addField(`${message.member.user.username} t'as banni pour la raison suivante: ${reason}`, "Bonne continuation")
   banMember.send(msgBan).then(() =>
   banMember.ban()).catch(err => console.log(err))
@@ -155,7 +176,7 @@ client.on('message', message => {
       const user = message.mentions.users.first() || message.author;
       const avatarEmbed = new discord.MessageEmbed()
           .setColor(0x333333)
-          .setAuthor("Avatar de: " + user.username)
+          .setAuthor("Avatar de : " + user.username)
           .setImage(user.avatarURL({ format: 'png', dynamic: true, size: 1024 }));
       message.channel.send(avatarEmbed);
 }
@@ -176,7 +197,7 @@ client.on('message', message => {
     if (!message.guild) return;
     if (message.author.bot) return;
     if (message.content === prefix + 'info') {
-       message.channel.send("j'ai été créée et développée par Aik et Toast, mon nom est Maid, mais vous pouvez m'appeler Kaori.");
+       message.channel.send("J'ai été créée et développée par Aik et Toast, mon nom est Maid, mais vous pouvez m'appeler Kaori, et oui je suis légale.");
     }
 });
 
@@ -202,10 +223,7 @@ message.channel.bulkDelete(number)
 }
 });
 
-//Voici le .say les phrases en commentaires (comme celle-ci) 
-//Correspondent à des choses pouvant être ajoutées ( 2 setcolor ne peuvent pas être dans un même embed donc si vous mettez la méthode pour obtenir une couleur aléatoire
-//vous devrez d'abord supprimer le .setColor('#FEE0E2') puis retirer les //
-
+//Say (.say)
 client.on('message', message => {
   const user = message.author;
   let messageArray = message.content.split(" ");
@@ -229,14 +247,13 @@ if(message.content.startsWith(".say")){
 client.on('message', message => {
     let messageArray = message.content.split(" ");
     let args = messageArray.slice(1);
-  
+
     if(message.content.startsWith(".bi")){
+
   //Vérifie si l'uilisateur est un bot
-  
     if(message.author.bot) return;
   
   //Bloque la commande en DM et en GROUP pour éviter les crash. . .
-  
      if(message.channel.type==="dm"||message.channel.type==="group") {
       return message.reply('Tu te sens si seul ? Pauvre de toi. . ');
       }
@@ -244,14 +261,11 @@ client.on('message', message => {
     if(!message.member.hasPermission(["BAN_MEMBERS"], ["ADMINISTRATOR"])) return message.channel.send("Tu n'as pas la permission de faire cette commande.")
     
   let BANMEMBER =  message.mentions.members.first() || message.guild.member(message.guild.members.cache.get(args[0]) )
-  
   //<raison>
-  
     let reason = args.slice(1).join(" ")
     if(!reason) reason = "Aucune raison donnée."
-  
+
   //EMBED
-  
     let banheu = new discord.MessageEmbed()
     .setTitle(`${message.guild.name} `)
     .setDescription("**Utilisateur banni :**")
@@ -259,15 +273,13 @@ client.on('message', message => {
     .setTimestamp()
      if(args[0] == undefined);
      if(!Number(args[0])) return message.channel.send(".bi <id> <raison>");
-  
+
   //Ne pas toucher 
-  
      if(Number(args[0])){
     let ban = client.users.fetch(args[0])
     .then(users => message.guild.members.ban(users.id)).then(users => console.log()).catch(error => {
     if(error.code !== 1844 ) return message.delete() && message.channel.send('**ID INVALIDE**')}
     ).then(error => { if(!error) message.channel.send(banheu)})
-    
 }} 
 })
 
@@ -292,7 +304,7 @@ client.on('message', message => {
         if(message.guild.verificationLevel === "NONE"){
        NivModServ = 'Aucun niveau de vérification' }
     const serverinf = new discord.MessageEmbed()
-    .setAuthor(guildname,iconguild)
+    .setAuthor('Hiku\'s Coffee','https://cdn.discordapp.com/attachments/648412438219325461/724619286924230666/a_762309dc83e08f460fd3c269aeaf8f3c.gif')
     .setThumbnail(iconguild)
     .setColor("RED")
     .setTitle(`ID: ${message.guild.id} `)
@@ -314,7 +326,7 @@ client.on('message', message => {
      message.guild.fetchBans()
      .then(banned => { 
        if(banned.size === 0||null||undefined) return message.channel.send('Aucun membre banni')
-          message.channel.send(`${banned.size} users are banned`);
+          message.channel.send(`${banned.size} clients ont été expulsés`);
      
     })
     .catch(console.error);
@@ -441,11 +453,11 @@ client.on('messageReactionAdd', async (reaction, user) => {
           const image = reaction.message.attachments.size > 0 ? (reaction, reaction.message.attachments.array()[0].url) : '';
           const embed = new discord.MessageEmbed()
               .setAuthor(reaction.message.author.tag, reaction.message.author.displayAvatarURL())
-              .setColor(`#ffdfdf`)
+              .setColor(`#c6606a`)
               .addFields({
                   name: '‎ ‎',
                   value:
-                   `**[Cliquez ici pour voir le message](https://discordapp.com/channels/${reaction.message.guild.id}/${reaction.message.channel.id}/${reaction.message.id})**`
+                   `***[Cliquez ici pour voir le message](https://discordapp.com/channels/${reaction.message.guild.id}/${reaction.message.channel.id}/${reaction.message.id})***`
               })
               
               .setDescription(reaction.message.content)
@@ -453,7 +465,7 @@ client.on('messageReactionAdd', async (reaction, user) => {
               .setFooter(reaction.message.id)
               .setTimestamp();
           if(maidboard)
-              maidboard.send('🌸 1 |'+ "<#" + reaction.message.channel.id + ">", embed);
+              maidboard.send('🌸 `1 |` '+ "<#" + reaction.message.channel.id + ">", embed);
       }
   }
   if(reaction.emoji.name === '⭐') {
