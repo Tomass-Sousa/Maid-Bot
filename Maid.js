@@ -29,8 +29,7 @@ const help = new discord.MessageEmbed()
       { name: '.totalban', value: '**Affiche le nombre de bannissements**', inline: true },
 		  { name: '.bonk', value: '**Bonk votre adversaire**', inline: true },) 
     .setImage('https://i.imgur.com/FIz6vAa.gif')
-    .setFooter(`*Certaines commandes ne sont accessibles qu'aux piliers*`)
-    .setTimestamp();
+    .setFooter(`Certaines commandes ne sont accessibles qu'aux piliers`);
 
 //Statut Maid
 client.on('ready',  () => {
