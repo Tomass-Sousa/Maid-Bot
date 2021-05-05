@@ -82,19 +82,6 @@ client.on('guildMemberAdd', member => {
      }
 });
 
-//bonk (.bonk)
-let messageArray = message.content.split(" ");
-args = messageArray.slice(1);
-pate = message.mentions.members.first()
-if(!pate) {
-     user = client.user.username };
-if(pate) {
-user = message.mentions.members.first().user.username}
-const embed = new discord.MessageEmbed()
-.setDescription(message.author.username + " Bonk ! " +  user)
-.setImage("https://i.imgur.com/KdChZbo.png")
-message.channel.send(embed)
-
 //kick (.kick)
   client.on('message', message => {
     let messageArray = message.content.split(" ");
@@ -505,6 +492,19 @@ client.on('messageReactionRemove', async (reaction, user) => {
           handleStarboard();
   }
 });
+
+//bonk (.bonk)
+let messageArray = message.content.split(" ");
+args = messageArray.slice(1);
+pate = message.mentions.members.first()
+if(!pate) {
+     user = client.user.username };
+if(pate) {
+user = message.mentions.members.first().user.username}
+const embed = new discord.MessageEmbed()
+.setDescription(message.author.username + " Bonk ! " +  user)
+.setImage("https://i.imgur.com/KdChZbo.png")
+message.channel.send(embed)
 
 //login
 client.login(DISCORD_TOKEN);  
