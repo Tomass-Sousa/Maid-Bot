@@ -40,7 +40,7 @@ client.on("guildMemberAdd", member => {  //event de join ca met a jour quand qq 
      let membre = 0
      membre =  member.guild.memberCount ;
     client.user.setActivity(`${membre} clients`, {
-          type: "STREAMING",
+          type: "WATCHING",
           url: "https://www.twitch.tv/Hiku'sCoffee"
          }
         );
@@ -49,7 +49,7 @@ client.on("guildMemberRemove", member => {  //evenement de leave donc ca met a j
      let membre = 0
      membre =  member.guild.memberCount ;
         client.user.setActivity(`${membre} clients`, {
-           type: "STREAMING",
+           type: "WATCHING",
            url: "https://www.twitch.tv/Hiku'sCoffee"
           }
         ); 
