@@ -62,12 +62,12 @@ client.on('guildMemberAdd', member => {
   const url = member.user.avatarURL({ format: 'png', dynamic: true, size: 1024 })
   const welcome = new discord.MessageEmbed()
 
-     .setColor(`#D9EFD7`)
+     .setColor(`#c6606a`)
      .setThumbnail(url)
      .setAuthor('Hiku\'s Coffee','https://cdn.discordapp.com/attachments/648412438219325461/724619286924230666/a_762309dc83e08f460fd3c269aeaf8f3c.gif')
      .addField('Un client est arrivé :',`Salutations, ${member.user.username}\nTu es notre ${member.guild.memberCount}ème client.`)
      .addField("Avant toutes choses :", "┊・Lire le <#711111570163499018> \n┊・Prendre ses <#716566179967139963> \n┊・Et regarder le <#715954917327765504> \n╰────────────────✦ ")
-     .setImage('https://i.imgur.com/xJgmcTV.gif')
+     .setImage('https://i.imgur.com/lWVliya.gif')
 
   channel.send(welcome)
 });
