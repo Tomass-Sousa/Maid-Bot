@@ -436,7 +436,7 @@ client.on('messageReactionAdd', async (reaction, user) => {
           const image = reaction.message.attachments.size > 0 ? (reaction, reaction.message.attachments.array()[0].url) : '';
           const embed = new discord.MessageEmbed()
               .setAuthor(reaction.message.author.tag, reaction.message.author.displayAvatarURL())
-              .setColor(`#c6606a`)
+              .setColor(`#9d9de2`)
               .addFields({
                   name: '‎ ‎',
                   value:
