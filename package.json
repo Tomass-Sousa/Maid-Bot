@@ -13,6 +13,6 @@
     "@discordjs/opus": "^0.3.2",
     "discord.js": "^12.2.0",
     "ffmpeg-static": "^4.2.7",
-    "ytdl-core": "^3.2.2"
+    "ytdl-core": "^4.8.2"
   }
 }

@@ -61,7 +61,7 @@ client.on('guildMemberAdd', member => {
   if (!channel) return;
   const welcome = new discord.MessageEmbed()
 
-     .setColor(`#CFF6AA`)
+     .setColor(`#9d9de2`)
      .setAuthor('Hiku\'s Coffee','https://cdn.discordapp.com/attachments/648412438219325461/724619286924230666/a_762309dc83e08f460fd3c269aeaf8f3c.gif')
      .addField('Un client est arrivé :',`Salutations, ${member.user.username}\nTu es notre ${member.guild.memberCount}ème client.`)
      .addField("Avant toutes choses :", "┊・Lire le <#711111570163499018> \n┊・Prendre ses <#716566179967139963> \n┊・Et regarder le <#715954917327765504> \n╰────────────────✦ ")
@@ -122,30 +122,30 @@ client.on('message', message => {
 
   if(message.content.startsWith(".ban")){
       if(message.channel.type==="dm"||message.channel.type==="group") {
-          return message.reply('Tu te sens si seul ? Pauvre de toi. . ');
+          return message.reply('Tu te sens si seul ? Pauvre de toi..');
       }
-  if(!message.member.hasPermission(["BAN_MEMBERS"], ["ADMINISTRATOR"])) return message.channel.send("Tu n'as pas la permission de faire cette commande.")
+  if(!message.member.hasPermission(["BAN_MEMBERS"], ["ADMINISTRATOR"])) return message.channel.send("Tu n'as pas la permission de bonk un client !")
 
   let banMember = message.mentions.members.first() //|| message.guild.members.get(args[0])
-  if(!banMember) return message.channel.send("Tu n'as donné aucun utilisateur à bannir...");
+  if(!banMember) return message.channel.send("Précise qui veux-tu bonk non ?");
   let reason = args.slice(1).join(" ")
-  if(!reason) reason = "Aucune raison donnée."
+  if(!reason) reason = "Aucune"
 
   if(!message.guild.me.hasPermission(["BAN_MEMBERS"], ["ADMINISTRATOR"])) return message.channel.send("Je n'ai pas la permission de faire ça.")
   
   const ban = new discord.MessageEmbed()
-      .setTitle("Maid a bien expulsé le client du café.")
-      .setColor(`#dc143c`)
-      .setImage('https://i.imgur.com/muxqYsx.gif')
-      .setDescription(`L'utilisateur a été banni`)
-      .addField(`${message.member.user.username} t'as banni pour la raison suivante: ${reason}`, "Si le ban n'est pas justifié, merci de contacter un pilier.")
+      .setTitle("Le client a été expulsé du serveur")
+      .setImage("https://i.imgur.com/toXejJy.gif")
+      .setColor(`#9d9de2`)
+      .setDescription(`Mon maître m'a ordonné de vous punir ! **BONK** \nPrépare toi sale gueux ! Ta sanction sera irrévocable !`)
+      .setTimestamp()
   message.channel.send(ban)
  
   const msgBan = new discord.MessageEmbed()
-      .setTitle(`Tu as été banni du serveur Hiku's Coffee.`)
-      .setImage('https://i.imgur.com/muxqYsx.gif')
-      .setColor(`#dc143c`)
-      .addField(`${message.member.user.username} t'as banni pour la raison suivante: ${reason}`, "Bonne continuation")
+      .setTitle("Prépare toi sale gueux ! Ta sanction sera irrévocable !")
+      .setImage("https://i.imgur.com/toXejJy.gif")
+      .setColor(`#9d9de2`)
+      .addField(`${message.member.user.username} t'as banni pour la raison suivante : ${reason}`, "Bonne continuation, et ne vous avisez pas de revenir.")
   banMember.send(msgBan).then(() =>
   banMember.ban()).catch(err => console.log(err))
 }
@@ -153,15 +153,15 @@ client.on('message', message => {
 
 //Pour voir l'avatar (.avatar)
 client.on('message', message => {
-    if (!message.guild) return;
-    if (message.author.bot) return;
-    if (message.content.startsWith('.avatar')) {
-      const user = message.mentions.users.first() || message.author;
-      const avatarEmbed = new discord.MessageEmbed()
-          .setColor(0x333333)
-          .setAuthor("Avatar de : " + user.username)
-          .setImage(user.avatarURL({ format: 'png', dynamic: true, size: 1024 }));
-      message.channel.send(avatarEmbed);
+  if (!message.guild) return;
+  if (message.author.bot) return;
+  if (message.content.startsWith('.avatar')) {
+    const user = message.mentions.users.first() || message.author;
+    const avatarEmbed = new discord.MessageEmbed()
+        .setColor('#9d9de2')
+        .setAuthor("Oh vous voulez voir les choses en grand ? \nVoici l'avatar de : " + user.username)
+        .setImage(user.avatarURL({ format: 'png', dynamic: true, size: 1024 }));
+    message.channel.send(avatarEmbed);
 }
 });
 
