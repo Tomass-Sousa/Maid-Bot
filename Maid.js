@@ -206,21 +206,22 @@ message.channel.bulkDelete(number)
 }
 });
 
-//Say (.say)
+//Voici le .say les phrases en commentaires (comme celle-ci) 
+//Correspondent à des choses pouvant être ajoutées ( 2 setcolor ne peuvent pas être dans un même embed donc si vous mettez la méthode pour obtenir une couleur aléatoire
+//vous devrez d'abord supprimer le .setColor('#FEE0E2') puis retirer les //
 client.on('message', message => {
   const user = message.author;
   let messageArray = message.content.split(" ");
   let args = messageArray.slice(1,Infinity)
   let patate = args.join(" ")
   const say = new discord.MessageEmbed() 
-  .setColor('#FEE0E2')
-  .setFooter(`${user.tag}`)
+  .setColor('#9d9de2')
   .setDescription(patate)
 if(message.content.startsWith(".say")){
    if(message.channel.type ==="dm"||message.channel.type==="group")
     {return ;}
     if(patate == '') return;
-    if(patate.length >= 1900) return message.delete() && message.channel.send("Vu la taille de ton message tu dois être ennuyant :/")
+    if(patate.length >= 1900) return message.delete() && message.channel.send("Vu la taille de ton message tu dois être ennuyant !")
          message.delete()
   	 message.channel.send(say)
 	}
