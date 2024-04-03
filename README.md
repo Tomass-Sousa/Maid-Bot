@@ -1,6 +1,6 @@
 # Maid-Bot
 
-A discord bot I made 3 years ago with a friend, this projet made us try and learn so many things.
+A discord bot I made 4 years ago with a friend, this projet made us try and learn so many things.
 
 It was not easy to host this bot and we had lots of crashes, but this was the final version, who's still working on heroku. 
 
