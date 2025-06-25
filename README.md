@@ -1,7 +1,5 @@
 # Maid (Kaori) - Bot Discord
 
-![Maid Banner](https://i.imgur.com/RixmTIw.png)
-
 **Maid**, aussi appelée **Kaori**, est un bot Discord multifonction développé pour animer, modérer et accompagner les membres d’un serveur à thème "café japonais". Pensé avec une touche d’humour et beaucoup d'amour, ce bot offre des fonctionnalités variées allant de la modération à la gestion musicale.
 
 ---
