@@ -180,7 +180,7 @@ client.on('message', message => {
     if (!message.guild) return;
     if (message.author.bot) return;
     if (message.content === prefix + 'info') {
-       message.channel.send("J'ai été créée et développée par Aik et Toast, mon nom est Maid, mais vous pouvez m'appeler Kaori, et oui je suis légale.");
+       message.channel.send("J'ai été créée et développée par Aik et Toast, mon nom est Maid, mais vous pouvez m'appeler Lyr.");
     }
 });
 
