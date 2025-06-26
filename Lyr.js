@@ -31,7 +31,7 @@ const help = new discord.MessageEmbed()
     .setImage('https://i.imgur.com/FIz6vAa.gif')
     .setFooter(`Certaines commandes ne sont accessibles qu'aux piliers`);
 
-//Statut Maid
+//Statut Lyr
 client.on('ready',  () => {
   console.log(`Connecté en tant que ${client.user.tag}!`);
   client.user.setStatus("dnd") 
@@ -180,7 +180,7 @@ client.on('message', message => {
     if (!message.guild) return;
     if (message.author.bot) return;
     if (message.content === prefix + 'info') {
-       message.channel.send("J'ai été créée et développée par Aik et Toast, mon nom est Maid, mais vous pouvez m'appeler Lyr.");
+       message.channel.send("J'ai été créée et développée par Aik et Toast, mon nom est Lyr.");
     }
 });
 
